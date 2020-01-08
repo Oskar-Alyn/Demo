@@ -5,16 +5,8 @@ export class game {
     this.gameLoop = aGameLoop;
   }
 
-  spawn (shipTemplate) {
-    let returnShip = new ship(
-      shipTemplate.graphic,
-      shipTemplate.color,
-      shipTemplate.scale,
-      shipTemplate.speed,
-      shipTemplate.rotationSpeed,
-      shipTemplate.aiType,
-      shipTemplate.weapon,
-    );
+  spawn (shipTemplate, team) {
+    let returnShip = new ship(shipTemplate, team);
 
     this.gameLoop.registerObject(returnShip);
 

@@ -24,7 +24,7 @@ export const base_1_graphic = new graphic([
 ]);
 
 export const basic_laser = new graphic([
-  [[5, 0, 0], [-5, 0, 0]], // front to back shell
+  [[5, 0, 0], [-5, 0, 0]], // laser
 ]);
 
 // TODO: 3d-ify all the graphics below

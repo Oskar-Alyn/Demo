@@ -1,18 +1,20 @@
 import { gameObject } from './gameObject.js';
 
 export class ship extends gameObject {
-  constructor(graphic, color, scale, speed, rotationSpeed, aiType, weapon) {
-    super(graphic, color, scale);
+  constructor(template, team) {
+    super(template.graphic, team.color, template.scale);
+
+    this.team = team;
 
     // ship statistics
-    this.speed = speed;
-    this.rotationSpeed = rotationSpeed;
+    this.speed = template.speed;
+    this.rotationSpeed = template.rotationSpeed;
 
-    this.weapon = weapon;
+    this.weapon = template.weapon;
     this.weaponCooldown = 0;
 
     // control systems
-    this.aiType = aiType;
+    this.aiType = template.aiType;
     this.movingForward = false;
     this.movingBackward = false;
     this.turningLeft = false;
@@ -38,13 +40,17 @@ export class ship extends gameObject {
   }
 
   weapons(gameLoop) {
-    if (this.useWeapon) {
+    if (this.weapon !== null && this.useWeapon) {
       this.weapon(this, gameLoop);
     }
   }
 
   run(gameLoop) {
-    this.aiType.run(this);
+    if (typeof(this.aiType) == 'undefined') {
+      console.log('No AI: ' + this);
+    } else if (this.aiType !== null) {
+      this.aiType.run(this);
+    }
     this.weapons(gameLoop);
     this.move();
     super.run();

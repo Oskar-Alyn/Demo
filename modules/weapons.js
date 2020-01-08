@@ -3,16 +3,26 @@ import { ship } from './ship.js';
 import { LASER_AI } from './ais.js';
 import { ai } from './ai.js';
 
+import { BASIC_LASER } from './ships.js';
+
+function spawnProjectile(aTemplate, aShip) {
+  let returnObject = new ship(aTemplate, aShip.team);
+
+  returnObject.x = aShip.x;
+  returnObject.y = aShip.y;
+  returnObject.r = aShip.r;
+  returnObject.Vx = aShip.Vx;
+  returnObject.Vy = aShip.Vy;
+
+  return returnObject;
+}
+
 export const FIGHTER_1_WEAPON = function(aShip, gameLoop) {
   if (aShip.weaponCooldown ==  0) {
     aShip.weaponCooldown = 10;
 
-    let laser = new ship(graphics.basic_laser, aShip.color, 1, 2, 0, new ai(LASER_AI), null);
-    laser.x = aShip.x;
-    laser.y = aShip.y;
-    laser.r = aShip.r;
-    laser.Vx = aShip.Vx;
-    laser.Vy = aShip.Vy;
+    // spawn a laser
+    let laser = spawnProjectile(BASIC_LASER, aShip);
     gameLoop.registerObject(laser);
 
   } else if (aShip.weaponCooldown > 0) {
