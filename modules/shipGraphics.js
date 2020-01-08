@@ -1,23 +1,29 @@
 import { graphic } from './graphics.js';
 
 export const fighter_1_graphic = new graphic([
-  [[20, 0], [-10, 0]], // inside cross
-  [[0, 10], [0, -10]], // inside cross
-  [[20, 0], [0, 10], [-10, 0], [0, -10], [20, 0]], // outer layer
+  [[20, 0, 0], [0, 0, 5], [-10, 0, 0], [0, 0, -5], [20, 0, 0]], // front to back shell
+  [[0, 10, 0], [0, 0, 5], [0, -10, 0], [0, 0, -5], [0, 10, 0]], // side to side shell
+  [[20, 0, 0], [0, 10, 0], [-10, 0, 0], [0, -10,  0], [20, 0, 0]], // flat shell
 ]);
 
 export const base_1_graphic = new graphic([
-  [[40, 100], [100, 40], [100, -40], [40, -100], [-40, -100], [-100, -40], [-100, 40], [-40, 100], [40, 100]], // outer octogon
-  [[20, 50], [50, 20], [50, -20], [20, -50], [-20, -50], [-50, -20], [-50, 20], [-20, 50], [20, 50]], // inner octogon
-  [[40, 100], [20, 50]], //connecting line
-  [[100, 40], [50, 20]], //connecting line
-  [[100, -40], [50, -20]], //connecting line
-  [[40, -100], [20, -50]], //connecting line
-  [[-40, -100], [-20, -50]], //connecting line
-  [[-100, -40], [-50, -20]], //connecting line
-  [[-100, 40], [-50, 20]], //connecting line
-  [[-40, 100], [-20, 50]], //connecting line
+  [[40, 100, 0], [100, 40, 0], [100, -40, 0], [40, -100, 0], [-40, -100, 0], [-100, -40, 0], [-100, 40, 0], [-40, 100, 0], [40, 100, 0]], // outermost octogon
+  [[20, 50, 50], [50, 20, 50], [50, -20, 50], [20, -50, 50], [-20, -50, 50], [-50, -20, 50], [-50, 20, 50], [-20, 50, 50], [20, 50, 50]], // top octogon
+  [[20, 50, -50], [50, 20, -50], [50, -20, -50], [20, -50, -50], [-20, -50, -50], [-50, -20, -50], [-50, 20, -50], [-20, 50, -50], [20, 50, -50]], // bottom octogon
+
+  // TODO: add connecting lines for the base
+
+  // [[40, 100], [20, 50]], //connecting line
+  // [[100, 40], [50, 20]], //connecting line
+  // [[100, -40], [50, -20]], //connecting line
+  // [[40, -100], [20, -50]], //connecting line
+  // [[-40, -100], [-20, -50]], //connecting line
+  // [[-100, -40], [-50, -20]], //connecting line
+  // [[-100, 40], [-50, 20]], //connecting line
+  // [[-40, 100], [-20, 50]], //connecting line
 ]);
+
+// TODO: 3d-ify all the graphics below
 
 export const turret_1_graphic = new graphic([
   [[5, 5], [15, 5]], // detail front

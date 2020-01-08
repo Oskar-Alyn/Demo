@@ -1,3 +1,5 @@
+import { VERTICAL_SHIFT } from './globalConstants.js';
+
 export class graphic {
   constructor(parts) {
     this.parts = parts;
@@ -12,7 +14,7 @@ export class graphic {
   }
 
   // does the trigonometry to rotate a coordinate
-  modifyCoord(coord, rotation) {
+  rotateCoord(coord, rotation) {
     // get cartesian coordinates
     let x = coord[0];
     let y = coord[1];
@@ -34,8 +36,7 @@ export class graphic {
     x = r * Math.cos(t);
     y = r * Math.sin(t);
 
-    // console.log([x, y]);
-    return [x, y];
+    return [x, y, coord[2]];
   }
 
   // scales graphic to scale number
@@ -45,7 +46,7 @@ export class graphic {
       returnGraphic[i] = [];
       for (let ii = 0; ii < this.parts[i].length; ii++) {
         let coordinate = this.parts[i][ii];
-        returnGraphic[i][ii] = [coordinate[0] * scaler, coordinate[1] * scaler];
+        returnGraphic[i][ii] = [coordinate[0] * scaler, coordinate[1] * scaler, coordinate[2] * scaler];
       }
     }
 
@@ -58,15 +59,21 @@ export class graphic {
     for (let i = 0; i < scaledGraphic.length; i++) {
       let context = canvasContext;
       let currentPart = scaledGraphic[i];
-      let currentCoordinate = this.modifyCoord(currentPart[0], aGameObject.r);
+      let currentCoordinate = this.rotateCoord(currentPart[0], aGameObject.r);
 
       context.strokeStyle = aGameObject.color;
-
       context.beginPath();
-      context.moveTo((aGameObject.x + currentCoordinate[0]), (aGameObject.y + currentCoordinate[1]));
-      for (let ii = 1; ii < currentPart.length; ii++) {
-        currentCoordinate = this.modifyCoord(currentPart[ii], aGameObject.r);
-        context.lineTo((aGameObject.x + currentCoordinate[0]), (aGameObject.y + currentCoordinate[1]));
+
+      for (let ii = 0; ii < currentPart.length; ii++) {
+        currentCoordinate = this.rotateCoord(currentPart[ii], aGameObject.r);
+        let xCoord = aGameObject.x + currentCoordinate[0];
+        let yCoord = VERTICAL_SHIFT * (aGameObject.y + currentCoordinate[1]) - currentCoordinate[2];
+
+        if (ii == 0) {
+          context.moveTo(xCoord, yCoord);
+        } else {
+          context.lineTo(xCoord, yCoord);
+        }
       }
       context.stroke();
     }

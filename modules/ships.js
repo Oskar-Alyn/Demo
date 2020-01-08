@@ -8,7 +8,7 @@ export const BASE_1 = new ship(
     '#00FFFF',
     1,
     0,
-    0.0002,
+    0.0001,
     new ai(ais.BASE_AI),
 );
 

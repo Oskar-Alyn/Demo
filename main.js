@@ -14,3 +14,4 @@ new keyboardController(PLAYER);
 
 let BASE = GAME.spawn(ships.BASE_1);
 BASE.x = 1400;
+BASE.y = 1000;
