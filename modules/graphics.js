@@ -1,8 +1,9 @@
 import { VERTICAL_SHIFT } from './globalConstants.js';
 
 export class graphic {
-  constructor(parts) {
+  constructor(parts, lineWidth) {
     this.parts = parts;
+    this.lineWidth = lineWidth;
   }
 
   // change radians to degrees and vice versa
@@ -62,6 +63,7 @@ export class graphic {
       let currentCoordinate = this.rotateCoord(currentPart[0], aGameObject.r);
 
       context.strokeStyle = aGameObject.color;
+      context.lineWidth = this.lineWidth;
       context.beginPath();
 
       for (let ii = 0; ii < currentPart.length; ii++) {

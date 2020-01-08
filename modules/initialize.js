@@ -24,7 +24,7 @@ export function initialize() {
 
     }
 
-    return new graphic(gridGraphic);
+    return new graphic(gridGraphic, 1);
   }
 
   let GRID = new gameObject(generateWorldGrid(400, 5), '#606060', 1);

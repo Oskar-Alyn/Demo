@@ -4,7 +4,7 @@ export const fighter_1_graphic = new graphic([
   [[20, 0, 0], [0, 0, 5], [-10, 0, 0], [0, 0, -5], [20, 0, 0]], // front to back shell
   [[0, 10, 0], [0, 0, 5], [0, -10, 0], [0, 0, -5], [0, 10, 0]], // side to side shell
   [[20, 0, 0], [0, 10, 0], [-10, 0, 0], [0, -10,  0], [20, 0, 0]], // flat shell
-]);
+], 2);
 
 export const base_1_graphic = new graphic([
   [[40, 100, 0], [100, 40, 0], [100, -40, 0], [40, -100, 0], [-40, -100, 0], [-100, -40, 0], [-100, 40, 0], [-40, 100, 0], [40, 100, 0]], // outermost octogon
@@ -21,11 +21,11 @@ export const base_1_graphic = new graphic([
   // [[-100, -40], [-50, -20]], //connecting line
   // [[-100, 40], [-50, 20]], //connecting line
   // [[-40, 100], [-20, 50]], //connecting line
-]);
+], 2);
 
 export const basic_laser = new graphic([
   [[5, 0, 0], [-5, 0, 0]], // laser
-]);
+], 3);
 
 // TODO: 3d-ify all the graphics below
 

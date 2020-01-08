@@ -11,9 +11,6 @@ export class display {
     this.y0 = 0;
     this.cameraFollowObject = null;
     this.maxCameraDistance = 1.5;
-
-    // TEMP FIX
-    this.context.lineWidth = 2;
   }
 
   updateCamera() {
