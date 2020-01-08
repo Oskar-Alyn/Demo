@@ -16,7 +16,7 @@ export const FIGHTER_1 = {
     scale: 1,
     speed: 0.5,
     rotationSpeed: 0.01,
-    aiType: null,
+    aiType: ais.FIGHTER_AI,
     weapon: weapons.FIGHTER_1_WEAPON,
 };
 
