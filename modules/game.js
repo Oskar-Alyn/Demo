@@ -1,5 +1,4 @@
 import { ship } from './ship.js';
-import { ai } from './ai.js';
 
 export class game {
   constructor (aGameLoop) {
