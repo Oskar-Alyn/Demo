@@ -1,15 +1,13 @@
 import * as graphics from './shipGraphics.js';
 import * as weapons from './weapons.js';
 import * as ais from './ais.js';
-import { ship } from './ship.js';
-import { ai } from './ai.js';
 
 export const BASE_1 = {
     graphic: graphics.base_1_graphic,
     scale: 1,
     speed: 0,
     rotationSpeed: 0.0001,
-    aiType: new ai(ais.BASE_AI),
+    aiType: ais.BASE_AI,
     weapon: null,
 };
 
@@ -27,6 +25,6 @@ export const BASIC_LASER = {
     scale: 1,
     speed: 2,
     rotationSpeed: 0,
-    aiType: new ai(ais.LASER_AI),
+    aiType: ais.LASER_AI,
     weapon: null,
 };
