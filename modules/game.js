@@ -6,11 +6,18 @@ export class game {
     this.gameLoop = aGameLoop;
   }
 
-  spawn (graphic, color, aiType) {
-    let thisAi = new ai(aiType);
-    let newGameObject = new ship(graphic, color, 1, 0.6, 0.0001, thisAi);
-    this.gameLoop.registerObject(newGameObject);
+  spawn (shipTemplate) {
+    let returnShip = new ship(
+      shipTemplate.graphic,
+      shipTemplate.color,
+      shipTemplate.scale,
+      shipTemplate.speed,
+      shipTemplate.rotationSpeed,
+      shipTemplate.aiType,
+    );
 
-    return newGameObject;
+    this.gameLoop.registerObject(returnShip);
+
+    return returnShip;
   }
 }
