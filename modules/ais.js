@@ -8,3 +8,10 @@ export const BASE_AI = function(aShip) {
   aShip.turningLeft = true;
   aShip.turningRight = false;
 }
+
+export const LASER_AI = function(aShip) {
+  aShip.movingForward = true;
+  aShip.movingBackward = false;
+  aShip.turningLeft = false;
+  aShip.turningRight = false;
+}

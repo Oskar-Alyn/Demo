@@ -13,6 +13,7 @@ export class game {
       shipTemplate.speed,
       shipTemplate.rotationSpeed,
       shipTemplate.aiType,
+      shipTemplate.weapon,
     );
 
     this.gameLoop.registerObject(returnShip);
