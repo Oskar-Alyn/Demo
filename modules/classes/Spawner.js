@@ -1,18 +1,26 @@
-import { RN, rotateCoord } from '../mathExtention.js'
+import { RN, rotateCoord, angleTo } from '../mathExtention.js'
 import { Ship } from './Ship.js';
+import { GameObject } from './GameObject.js';
 
 export class Spawner {
   constructor (template, edgeDistance) {
     this.frequency = template.frequency;
+    this.spawnType = template.spawnType;
     this.spawnTemplate = template.spawnTemplate;
     this.onlyEdges = template.onlyEdges;
     this.team = template.team;
     this.edgeDistance = edgeDistance;
   }
 
-  run (gameLoop) {
+  run (game) {
     if (RN(0, this.frequency) == 0) {
-      let spawn = new Ship(this.spawnTemplate, this.team)
+      let spawn;
+
+      if (this.spawnType == 'Ships') {
+        spawn = new Ship(this.spawnTemplate, this.team);
+      } else {
+        spawn = new GameObject(this.spawnTemplate);
+      }
 
       spawn.r = RN(0, 3141) / 100;
       if (this.onlyEdges) {
@@ -30,16 +38,20 @@ export class Spawner {
         spawn.y = location[1];
 
         // point at center
-        spawn.r = Math.atan(spawn.y / spawn.x);
-        if (spawn.x < 0) { spawn.r += 3.14159 }
-        spawn.r += 3.14159;
+        spawn.r = angleTo(spawn.x, spawn.y, 0, 0);
+
       } else {
         spawn.x = RN(-1 * this.edgeDistance, this.edgeDistance);
         spawn.y = RN(-1 * this.edgeDistance, this.edgeDistance);
         spawn.r = RN(0, 3141) / 100;
+
+        // move to align with grid
+        let location = rotateCoord([spawn.x, spawn.y, 0], (3.1415 / 4));
+        spawn.x = location[0];
+        spawn.y = location[1];
       }
 
-      gameLoop.registerObject(spawn);
+      game.gameLoop.registerObject(spawn);
     }
   }
 }

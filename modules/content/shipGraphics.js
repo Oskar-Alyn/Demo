@@ -23,10 +23,6 @@ export const base_1_graphic = new Graphic([
   // [[-40, 100], [-20, 50]], //connecting line
 ], 2);
 
-export const basic_laser = new Graphic([
-  [[5, 0, 0], [-5, 0, 0]], // laser
-], 3);
-
 // TODO: 3d-ify all the graphics below
 
 export const turret_1_graphic = new Graphic([
@@ -36,9 +32,4 @@ export const turret_1_graphic = new Graphic([
   [[5, -5], [15, -15]], // detail back
   [[5, 35], [5, -5], [-5, -5], [-5, 35], [5, 35]], // turret rectangle
   [[5, 15], [15, 5], [15, -15], [-15, -15], [-15, 5], [-5, 15]], // outer layer
-]);
-
-export const credit_graphic = new Graphic([
-  [[-4, -2], [0, 2], [4, -2]], // inside
-  [[2, 4], [6, 0], [6, -4], [-6, -4], [-6, 4], [2, 4]], // outer layer
 ]);

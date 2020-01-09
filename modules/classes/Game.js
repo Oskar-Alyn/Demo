@@ -1,9 +1,11 @@
 export class Game {
-  constructor (aGameLoop) {
-    this.gameLoop = aGameLoop;
+  constructor () {
+    this.gameLoop;
+    this.display;
+    this.state;
   }
 
   loadLevel (level) {
-    level.loadLevel(this.gameLoop);
+    level.loadLevel(this);
   }
 }

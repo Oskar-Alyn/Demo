@@ -7,7 +7,10 @@ export const BASE_1 = {
     scale: 1,
     speed: 0,
     rotationSpeed: 0.0001,
-    aiType: ais.BASE_AI,
+    aiType: {
+      aiFunction: ais.BASE_AI,
+      detectionDistance: 1,
+    },
     weapon: null,
 };
 

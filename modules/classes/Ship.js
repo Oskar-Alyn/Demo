@@ -1,8 +1,14 @@
 import { GameObject } from './GameObject.js';
+import { Ai } from './Ai.js';
 
 export class Ship extends GameObject {
   constructor(template, team) {
-    super(template.graphic, team.color, template.scale);
+    super({
+      graphic: template.graphic,
+      color: team.color,
+      scale: template.scale,
+      behaviour: new Ai(template.aiType),
+    });
 
     this.team = team;
 
@@ -14,7 +20,6 @@ export class Ship extends GameObject {
     this.weaponCooldown = 0;
 
     // control systems
-    this.aiType = template.aiType;
     this.movingForward = false;
     this.movingBackward = false;
     this.turningLeft = false;
@@ -45,14 +50,9 @@ export class Ship extends GameObject {
     }
   }
 
-  run(gameLoop) {
-    if (typeof(this.aiType) == 'undefined') {
-      console.log('No AI: ' + this);
-    } else if (this.aiType !== null) {
-      this.aiType.run(this);
-    }
-    this.weapons(gameLoop);
+  run(game) {
+    this.weapons(game);
     this.move();
-    super.run();
+    super.run(game);
   }
 }

@@ -27,3 +27,29 @@ export function rotateCoord(coord, rotation) {
 
   return [x, y, coord[2]];
 }
+
+// find r from position 1 to position 2
+export function angleTo(x1, y1, x2, y2) {
+  // check for bad angle
+  if (x2 - x1 == 0) {
+    if (y2 - y1 < 0) {
+      return -3.14159 / 2; // FIX NUMS
+    } else {
+      return 3.14159 / 2;
+    }
+  }
+
+  let r = Math.atan((y2 - y1) / (x2 - x1));
+  if (x2 - x1 < 0) { r += 3.14159 }
+
+  return r;
+}
+
+// find distance between two points
+export function pythagorean(x1, y1, x2, y2) {
+  let xDistance = Math.abs(x1 - x2);
+  let yDistance = Math.abs(y1 - y2);
+  let distance = Math.sqrt((xDistance * xDistance) + (yDistance * yDistance));
+
+  return distance;
+}

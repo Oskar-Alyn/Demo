@@ -1,7 +1,8 @@
 import { ROTATION_FRICTION, LINEAR_FRICTION } from '../globalConstants.js';
+import { Ai } from './Ai.js';
 
 export class GameObject {
-  constructor(graphic, color, scale) {
+  constructor (template) {
     // physics properties
     this.x = 0;
     this.y = 0;
@@ -11,12 +12,31 @@ export class GameObject {
     this.Vr = 0;
 
     // visual properties
-    this.graphic = graphic;
-    this.color = color;
-    this.scale = scale;
+    this.graphic = template.graphic;
+    this.color = template.color;
+    this.scale = template.scale;
+
+    // behaviour properties
+    if (typeof(template.behaviour) == 'undefined') {
+      this.behaviour = null;
+    } else if (typeof(template.behaviour) == 'object') {
+      this.behaviour = new Ai(template.behaviour);
+    } else {
+      this.behaviour = template.behaviour;
+    }
   }
 
-  doMotion() {
+  runBehaviour (game) {
+    if (this.behaviour !== null) {
+      if (typeof(this.behaviour) == 'object') {
+        this.behaviour.run(this, game);
+      } else {
+        this.behaviour(this);
+      }
+    }
+  }
+
+  doMotion () {
     this.x += this.Vx;
     this.y += this.Vy;
     this.r += this.Vr;
@@ -25,7 +45,8 @@ export class GameObject {
     this.Vr *= ROTATION_FRICTION;
   }
 
-  run(aGameLoop) {
+  run (game) {
+    this.runBehaviour(game);
     this.doMotion();
   }
 }

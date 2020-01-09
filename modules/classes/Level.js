@@ -4,6 +4,7 @@ import { Ship } from './Ship.js';
 import { Spawner } from './Spawner.js';
 import { GRID_SQUARE_SIZE, HUD_COLOR } from '../globalConstants.js';
 import { KeyboardController } from './KeyboardController.js';
+import { Ai } from './ai.js';
 
 export class Level {
   constructor(levelTemplate) {
@@ -26,14 +27,18 @@ export class Level {
   }
 
   addWorldGrid(gameLoop) {
-    let grid = new GameObject(this.generateGrid(GRID_SQUARE_SIZE, this.gridSize), HUD_COLOR, 1);
+    let grid = new GameObject({
+      graphic: this.generateGrid(GRID_SQUARE_SIZE, this.gridSize),
+      color: HUD_COLOR,
+      scale: 1,
+    });
     grid.r = 3.14115 / 4;
     gameLoop.registerObject(grid);
   }
 
-  loadLevel(gameLoop) {
+  loadLevel(game) {
     // add grid first so it shows in back
-    this.addWorldGrid(gameLoop);
+    this.addWorldGrid(game.gameLoop);
 
     // spawn designated ships
     for (let i = 0; i < this.spawns.length; i++) {
@@ -46,12 +51,15 @@ export class Level {
 
       } else if (spawnInfo.type == 'Player') {
         spawn = new Ship(spawnInfo.template, spawnInfo.team);
-        spawn.aiType = null;
+        spawn.behaviour = new Ai({aiFunction: function(aShip, ai){ return null; }, detectionDistance: 1});
         new KeyboardController(spawn);
-        gameLoop.objectsToRun[0].cameraFollowObject = spawn; // FIX TO MORE ROBUST SYSTEM
+        game.gameLoop.objectsToRun[0].cameraFollowObject = spawn; // FIX TO MORE ROBUST SYSTEM
 
       } else if (spawnInfo.type == 'Spawner') {
         spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE)
+
+      } else if (spawnInfo.type == 'Object') {
+        spawn = new GameObject(spawnInfo.template)
 
       } else {
         console.log('Not a valid type for levels: ' + spawnInfo.type);
@@ -64,7 +72,7 @@ export class Level {
       if (typeof(spawnInfo.r) !== 'undefined') { spawn.r = spawnInfo.r };
 
       // add the spawn to the game
-      gameLoop.registerObject(spawn);
+      game.gameLoop.registerObject(spawn);
     }
   }
 }

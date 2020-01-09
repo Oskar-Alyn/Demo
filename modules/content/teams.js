@@ -3,5 +3,5 @@ export const BLUE = {
 }
 
 export const RED = {
-  color: '#FF2020'
+  color: '#FF2020',
 }
