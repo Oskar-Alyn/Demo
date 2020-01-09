@@ -1,6 +1,7 @@
 import { gameObject } from './gameObject.js';
 import { graphic } from './graphics.js';
 import { ship } from './ship.js';
+import { spawner } from './spawner.js';
 import { GRID_SQUARE_SIZE, HUD_COLOR } from './globalConstants.js';
 import { keyboardController } from './keyboardController.js';
 
@@ -49,8 +50,12 @@ export class level {
         new keyboardController(spawn);
         gameLoop.objectsToRun[0].cameraFollowObject = spawn; // FIX TO MORE ROBUST SYSTEM
 
+      } else if (spawnInfo.type == 'Spawner') {
+        spawn = new spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE)
+
       } else {
-        spawn = new gameObject(spawnInfo.graphic, spawnInfo.color, spawnInfo.scale);
+        console.log('Not a valid type for levels: ' + spawnInfo.type);
+        return null;
       }
 
       // set location according to info

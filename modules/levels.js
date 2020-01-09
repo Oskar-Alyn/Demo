@@ -1,12 +1,13 @@
 import { level } from './level.js';
 import * as ships from './ships.js';
 import * as teams from './teams.js';
+import * as spawners from './spawners.js';
 
 export const TEST_LEVEL = new level({
-  gridSize: 5,
+  gridSize: 6,
   spawns: [
     {type: 'Player', template: ships.FIGHTER_1, team: teams.BLUE},
     {type: 'Ship', template: ships.BASE_1, team: teams.BLUE},
-    {type: 'Ship', template: ships.FIGHTER_1, team: teams.RED, x: -600, y: 200},
+    {type: 'Spawner', template: spawners.CREDIT_SPAWNER}
   ],
 });

@@ -1,43 +1,10 @@
 import { VERTICAL_SHIFT } from './globalConstants.js';
+import { rotateCoord } from './mathExtention.js';
 
 export class graphic {
   constructor(parts, lineWidth) {
     this.parts = parts;
     this.lineWidth = lineWidth;
-  }
-
-  // change radians to degrees and vice versa
-  toDegrees(radians) {
-    return (radians / 3.14159 * 180);
-  }
-  toRadians(degrees) {
-    return (degrees * 3.14159 / 180);
-  }
-
-  // does the trigonometry to rotate a coordinate
-  rotateCoord(coord, rotation) {
-    // get cartesian coordinates
-    let x = coord[0];
-    let y = coord[1];
-
-    // check for invalid coordinates
-    if (x == 0 && y == 0) {
-      return coord;
-    }
-
-    // convert to polar coordinates
-    let r = Math.sqrt((x * x) + (y * y));
-    let t = Math.atan(y / x);
-    if (x < 0) { t += 3.14159 }
-
-    // add rotation
-    t += rotation;
-
-    // convert back to cartesian coordinates
-    x = r * Math.cos(t);
-    y = r * Math.sin(t);
-
-    return [x, y, coord[2]];
   }
 
   // scales graphic to scale number
@@ -60,14 +27,14 @@ export class graphic {
     for (let i = 0; i < scaledGraphic.length; i++) {
       let context = display.context;
       let currentPart = scaledGraphic[i];
-      let currentCoordinate = this.rotateCoord(currentPart[0], aGameObject.r);
+      let currentCoordinate = rotateCoord(currentPart[0], aGameObject.r);
 
       context.strokeStyle = aGameObject.color;
       context.lineWidth = this.lineWidth;
       context.beginPath();
 
       for (let ii = 0; ii < currentPart.length; ii++) {
-        currentCoordinate = this.rotateCoord(currentPart[ii], aGameObject.r);
+        currentCoordinate = rotateCoord(currentPart[ii], aGameObject.r);
         let xCoord = display.x0 + aGameObject.x + currentCoordinate[0];
         let yCoord = display.y0 + VERTICAL_SHIFT * (aGameObject.y + currentCoordinate[1]) - currentCoordinate[2];
 
