@@ -1,6 +1,6 @@
-import { gameObject } from './gameObject.js';
+import { GameObject } from './GameObject.js';
 
-export class ship extends gameObject {
+export class Ship extends GameObject {
   constructor(template, team) {
     super(template.graphic, team.color, template.scale);
 

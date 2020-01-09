@@ -1,11 +1,11 @@
-import { gameObject } from './gameObject.js';
-import { graphic } from './graphics.js';
-import { ship } from './ship.js';
-import { spawner } from './spawner.js';
-import { GRID_SQUARE_SIZE, HUD_COLOR } from './globalConstants.js';
-import { keyboardController } from './keyboardController.js';
+import { GameObject } from './GameObject.js';
+import { Graphic } from './Graphic.js';
+import { Ship } from './Ship.js';
+import { Spawner } from './Spawner.js';
+import { GRID_SQUARE_SIZE, HUD_COLOR } from '../globalConstants.js';
+import { KeyboardController } from './KeyboardController.js';
 
-export class level {
+export class Level {
   constructor(levelTemplate) {
     this.spawns = levelTemplate.spawns;
     this.gridSize = levelTemplate.gridSize;
@@ -22,11 +22,11 @@ export class level {
       gridGraphic[i * 4 + 3] = [[lineLength, squareSize * i * -1, 0], [lineLength * -1, squareSize * i * -1, 0]];
     }
 
-    return new graphic(gridGraphic, 1);
+    return new Graphic(gridGraphic, 1);
   }
 
   addWorldGrid(gameLoop) {
-    let grid = new gameObject(this.generateGrid(GRID_SQUARE_SIZE, this.gridSize), HUD_COLOR, 1);
+    let grid = new GameObject(this.generateGrid(GRID_SQUARE_SIZE, this.gridSize), HUD_COLOR, 1);
     grid.r = 3.14115 / 4;
     gameLoop.registerObject(grid);
   }
@@ -42,16 +42,16 @@ export class level {
 
       // differentiate possible spawn types
       if (spawnInfo.type == 'Ship') {
-        spawn = new ship(spawnInfo.template, spawnInfo.team);
+        spawn = new Ship(spawnInfo.template, spawnInfo.team);
 
       } else if (spawnInfo.type == 'Player') {
-        spawn = new ship(spawnInfo.template, spawnInfo.team);
+        spawn = new Ship(spawnInfo.template, spawnInfo.team);
         spawn.aiType = null;
-        new keyboardController(spawn);
+        new KeyboardController(spawn);
         gameLoop.objectsToRun[0].cameraFollowObject = spawn; // FIX TO MORE ROBUST SYSTEM
 
       } else if (spawnInfo.type == 'Spawner') {
-        spawn = new spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE)
+        spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE)
 
       } else {
         console.log('Not a valid type for levels: ' + spawnInfo.type);

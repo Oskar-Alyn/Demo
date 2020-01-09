@@ -1,6 +1,6 @@
-import * as consts from './globalConstants.js';
+import * as consts from '../globalConstants.js';
 
-export class display {
+export class Display {
   constructor () {
     this.canvas = document.getElementById(consts.CANVAS_ID);
     this.context = this.canvas.getContext(consts.CANVAS_CONTEXT);

@@ -1,6 +1,6 @@
-import { ROTATION_FRICTION, LINEAR_FRICTION } from './globalConstants.js';
+import { ROTATION_FRICTION, LINEAR_FRICTION } from '../globalConstants.js';
 
-export class gameObject {
+export class GameObject {
   constructor(graphic, color, scale) {
     // physics properties
     this.x = 0;

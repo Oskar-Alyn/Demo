@@ -1,7 +1,7 @@
-import { VERTICAL_SHIFT } from './globalConstants.js';
-import { rotateCoord } from './mathExtention.js';
+import { VERTICAL_SHIFT } from '../globalConstants.js';
+import { rotateCoord } from '../mathExtention.js';
 
-export class graphic {
+export class Graphic {
   constructor(parts, lineWidth) {
     this.parts = parts;
     this.lineWidth = lineWidth;

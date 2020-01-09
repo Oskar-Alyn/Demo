@@ -1,6 +1,4 @@
-import { ship } from './ship.js';
-
-export class game {
+export class Game {
   constructor (aGameLoop) {
     this.gameLoop = aGameLoop;
   }

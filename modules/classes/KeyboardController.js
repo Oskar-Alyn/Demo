@@ -1,4 +1,4 @@
-export class keyboardController {
+export class KeyboardController {
   constructor(aGameObject) {
     this.controlledObject = aGameObject;
 

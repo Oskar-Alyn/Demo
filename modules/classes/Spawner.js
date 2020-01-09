@@ -1,7 +1,7 @@
-import { RN, rotateCoord } from './mathExtention.js'
-import { ship } from './ship.js';
+import { RN, rotateCoord } from '../mathExtention.js'
+import { Ship } from './Ship.js';
 
-export class spawner {
+export class Spawner {
   constructor (template, edgeDistance) {
     this.frequency = template.frequency;
     this.spawnTemplate = template.spawnTemplate;
@@ -12,7 +12,7 @@ export class spawner {
 
   run (gameLoop) {
     if (RN(0, this.frequency) == 0) {
-      let spawn = new ship(this.spawnTemplate, this.team)
+      let spawn = new Ship(this.spawnTemplate, this.team)
 
       spawn.r = RN(0, 3141) / 100;
       if (this.onlyEdges) {

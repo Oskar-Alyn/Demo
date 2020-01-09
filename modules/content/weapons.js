@@ -1,12 +1,11 @@
 import * as graphics from './shipGraphics.js';
-import { ship } from './ship.js';
+import { Ship } from '../classes/Ship.js';
 import { LASER_AI } from './ais.js';
-import { ai } from './ai.js';
 
 import { BASIC_LASER } from './ships.js';
 
 function spawnProjectile(aTemplate, aShip) {
-  let returnObject = new ship(aTemplate, aShip.team);
+  let returnObject = new Ship(aTemplate, aShip.team);
 
   returnObject.x = aShip.x;
   returnObject.y = aShip.y;

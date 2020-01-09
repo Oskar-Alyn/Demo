@@ -1,4 +1,4 @@
-export class ai {
+export class Ai {
   constructor(aiFunction) {
     this.aiFunction = aiFunction;
   }

@@ -1,6 +1,6 @@
-import { FRAMES_PER_SECOND } from './globalConstants.js';
+import { FRAMES_PER_SECOND } from '../globalConstants.js';
 
-export class gameLoop {
+export class GameLoop {
   constructor() {
     this.objectsToRun = [];
   }
