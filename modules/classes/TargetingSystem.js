@@ -28,11 +28,11 @@ export class TargetingSystem {
               }
 
               // set targets for both objects
-              if (distance < objects[i].behaviour.targetDistance) {
+              if (distance < objects[i].behaviour.targetDistance && typeof objects[ii].team !== 'undefined') {
                 objects[i].behaviour.targetDistance = distance;
                 objects[i].behaviour.aiTarget = objects[ii];
               }
-              if (distance < objects[ii].behaviour.targetDistance) {
+              if (distance < objects[ii].behaviour.targetDistance && typeof objects[i].team !== 'undefined') {
                 objects[ii].behaviour.targetDistance = distance;
                 objects[ii].behaviour.aiTarget = objects[i];
               }

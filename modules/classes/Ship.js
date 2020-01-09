@@ -7,7 +7,7 @@ export class Ship extends GameObject {
       graphic: template.graphic,
       color: team.color,
       scale: template.scale,
-      behaviour: new Ai(template.aiType),
+      behaviour: template.aiType,
     });
 
     this.team = team;
@@ -15,6 +15,10 @@ export class Ship extends GameObject {
     // ship statistics
     this.speed = template.speed;
     this.rotationSpeed = template.rotationSpeed;
+
+    this.shield = template.shieldMax;
+    this.shieldMax = template.shieldMax;
+    this.drop = template.drop;
 
     this.weapon = template.weapon;
     this.weaponCooldown = 0;
@@ -44,9 +48,20 @@ export class Ship extends GameObject {
     }
   }
 
-  weapons(gameLoop) {
+  weapons(game) {
     if (this.weapon !== null && this.useWeapon) {
-      this.weapon(this, gameLoop);
+      this.weapon(this, game);
+    }
+  }
+
+  deathCheck(game) {
+    if (this.shield <= 0) {
+      game.gameLoop.unregisterObject(this);
+
+      let drop = new GameObject(this.drop);
+      drop.x = this.x;
+      drop.y = this.y;
+      game.gameLoop.registerObject(drop);
     }
   }
 
@@ -54,5 +69,6 @@ export class Ship extends GameObject {
     this.weapons(game);
     this.move();
     super.run(game);
+    this.deathCheck(game); // needs to be last, may unregister ship
   }
 }

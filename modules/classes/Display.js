@@ -38,5 +38,6 @@ export class Display {
     this.context.fillStyle = "white";
     this.context.font = "30px Arial";
     this.context.fillText("Credits: " + game.state.playerCredits, 10, 40);
+    this.context.fillText("Player Shield: " + game.player.shield, 10, 70);
   }
 }

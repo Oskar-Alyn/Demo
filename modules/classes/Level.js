@@ -53,6 +53,7 @@ export class Level {
         spawn = new Ship(spawnInfo.template, spawnInfo.team);
         spawn.behaviour = new Ai({aiFunction: function(aShip, ai){ return null; }, detectionDistance: 1});
         new KeyboardController(spawn);
+        game.player = spawn;
         game.gameLoop.objectsToRun[0].cameraFollowObject = spawn; // FIX TO MORE ROBUST SYSTEM
 
       } else if (spawnInfo.type == 'Spawner') {

@@ -1,4 +1,5 @@
 import * as graphics from './shipGraphics.js';
+import * as objects from './objects.js'
 import * as weapons from './weapons.js';
 import * as ais from './ais.js';
 
@@ -11,23 +12,21 @@ export const BASE_1 = {
       aiFunction: ais.BASE_AI,
       detectionDistance: 1,
     },
+    shieldMax: 20,
     weapon: null,
+    drop: objects.CREDIT,
 };
 
 export const FIGHTER_1 = {
     graphic: graphics.fighter_1_graphic,
-    scale: 1,
-    speed: 0.5,
-    rotationSpeed: 0.01,
-    aiType: ais.FIGHTER_AI,
+    scale: 1.5,
+    speed: 0.2,
+    rotationSpeed: 0.005,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 4000,
+    },
+    shieldMax: 2,
     weapon: weapons.FIGHTER_1_WEAPON,
-};
-
-export const BASIC_LASER = {
-    graphic: graphics.basic_laser,
-    scale: 1,
-    speed: 2,
-    rotationSpeed: 0,
-    aiType: ais.LASER_AI,
-    weapon: null,
+    drop: objects.CREDIT,
 };

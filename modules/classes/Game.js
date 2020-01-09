@@ -3,6 +3,7 @@ export class Game {
     this.gameLoop;
     this.display;
     this.state;
+    this.player;
   }
 
   loadLevel (level) {

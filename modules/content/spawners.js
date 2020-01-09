@@ -9,3 +9,19 @@ export const CREDIT_SPAWNER = new Spawner({
   spawnTemplate: objects.CREDIT,
   onlyEdges: false,
 });
+
+export const ENEMY_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 500,
+  spawnTemplate: ships.FIGHTER_1,
+  team: teams.RED,
+  onlyEdges: true,
+});
+
+export const GOOD_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 550,
+  spawnTemplate: ships.FIGHTER_1,
+  team: teams.BLUE,
+  onlyEdges: false,
+});
