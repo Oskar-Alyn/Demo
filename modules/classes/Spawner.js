@@ -3,13 +3,13 @@ import { Ship } from './Ship.js';
 import { GameObject } from './GameObject.js';
 
 export class Spawner {
-  constructor (template, edgeDistance) {
+  constructor (template, edgeDistance, team) {
     this.frequency = template.frequency;
     this.frequencyNormalizer = 0;
     this.spawnType = template.spawnType;
     this.spawnTemplate = template.spawnTemplate;
     this.onlyEdges = template.onlyEdges;
-    this.team = template.team;
+    this.team = team;
     this.edgeDistance = edgeDistance;
   }
 

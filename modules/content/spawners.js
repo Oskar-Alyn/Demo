@@ -10,34 +10,16 @@ export const CREDIT_SPAWNER = new Spawner({
   onlyEdges: false,
 });
 
-export const ENEMY_FIGHTER_1_SPAWNER = new Spawner({
+export const FIGHTER_1_SPAWNER = new Spawner({
   spawnType: 'Ships',
   frequency: 500,
   spawnTemplate: ships.FIGHTER_1,
-  team: teams.RED,
   onlyEdges: true,
 });
 
-export const GOOD_FIGHTER_1_SPAWNER = new Spawner({
-  spawnType: 'Ships',
-  frequency: 500,
-  spawnTemplate: ships.FIGHTER_1,
-  team: teams.BLUE,
-  onlyEdges: false,
-});
-
-export const ENEMY_FIGHTER_2_SPAWNER = new Spawner({
+export const FIGHTER_2_SPAWNER = new Spawner({
   spawnType: 'Ships',
   frequency: 5000,
   spawnTemplate: ships.FIGHTER_2,
-  team: teams.RED,
-  onlyEdges: true,
-});
-
-export const GOOD_FIGHTER_2_SPAWNER = new Spawner({
-  spawnType: 'Ships',
-  frequency: 5000,
-  spawnTemplate: ships.FIGHTER_2,
-  team: teams.BLUE,
   onlyEdges: false,
 });

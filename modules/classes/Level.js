@@ -61,7 +61,7 @@ export class Level {
         game.display.cameraFollowObject = spawn;
 
       } else if (spawnInfo.type == 'Spawner') {
-        spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE)
+        spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE, spawnInfo.team);
 
       } else if (spawnInfo.type == 'Object') {
         spawn = new GameObject(spawnInfo.template)
