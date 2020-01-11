@@ -30,3 +30,17 @@ export const FIGHTER_1 = {
     weapon: weapons.FIGHTER_1_WEAPON,
     drop: objects.CREDIT,
 };
+
+export const FIGHTER_2 = {
+    graphic: graphics.fighter_2_graphic,
+    scale: 2.5,
+    speed: 0.024,
+    rotationSpeed: 0.0015,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 200,
+    },
+    shieldMax: 7,
+    weapon: weapons.FIGHTER_2_WEAPON,
+    drop: objects.CREDIT,
+};

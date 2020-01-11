@@ -42,3 +42,37 @@ export const FIGHTER_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown -= 1;
   }
 }
+
+export const FIGHTER_2_WEAPON = function(aShip, game) {
+  if (aShip.weaponCooldown ==  0) {
+    aShip.weaponCooldown = 4;
+
+    // spawn a laser
+    let laser1 = spawnProjectile(objects.BASIC_LASER, aShip);
+    let laser2 = spawnProjectile(objects.BASIC_LASER, aShip);
+
+    if (aShip.weaponState == 0) {
+      aShip.weaponState = 1;
+      laser1.x += Math.cos(laser1.r) * 1.2;
+      laser1.y += Math.sin(laser1.r) * 1.2;
+      laser2.x -= Math.cos(laser2.r) * 1.2;
+      laser2.y -= Math.sin(laser2.r) * 1.2;
+    } else {
+      aShip.weaponState = 0;
+      laser1.x += Math.cos(laser1.r) * 3;
+      laser1.y += Math.sin(laser1.r) * 3;
+      laser2.x -= Math.cos(laser2.r) * 3;
+      laser2.y -= Math.sin(laser2.r) * 3;
+
+    }
+
+    game.gameLoop.registerObject(laser1);
+    game.gameLoop.registerObject(laser2);
+
+    //  recoil
+    aShip.push(aShip.r + aShip.offset, -0.015)
+
+  } else if (aShip.weaponCooldown > 0) {
+    aShip.weaponCooldown -= 1;
+  }
+}

@@ -36,7 +36,6 @@ export class Display {
     playerSpeed = Math.cos(speedAngle) * playerSpeed; // make speed relative to direction facing
     let angle = ((Math.tanh(playerSpeed / (game.player.speed * 40)) * (1 - consts.MIN_CAMERA_ANGLE))) + consts.MIN_CAMERA_ANGLE
     game.state.cameraTilt = angle; // bind to max 1
-    console.log(angle);
 
     // move camera
     if (this.cameraFollowObject !== null) {
