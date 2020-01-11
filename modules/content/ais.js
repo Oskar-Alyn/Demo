@@ -42,12 +42,16 @@ export const COLLECTIBLE_AI = function(aShip, ai, game) {
   if (game.player.shield > 0) {
     let targetAngle = angleTo(aShip.x, aShip.y, game.player.x, game.player.y);
 
-    if (pythagorean(aShip.x, aShip.y, game.player.x, game.player.y) > 1) {
+    if (pythagorean(aShip.x, aShip.y, game.player.x, game.player.y) < 100) {
       aShip.push(targetAngle, 0.05);
-    } else {
+    }
+
+
+    if (pythagorean(aShip.x, aShip.y, game.player.x, game.player.y) < 1) {
       game.gameLoop.unregisterObject(aShip);
       game.state.playerCredits += 1;
     }
+
   }
 
   aShip.Vr = 0.02;
