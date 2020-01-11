@@ -37,7 +37,19 @@ export class Level {
     gameLoop.registerObject(grid);
   }
 
-  loadLevel(game) {
+  cleanGameLoop (game) {
+    for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
+      let obj = game.gameLoop.objectsToRun[i];
+
+      if (obj !== game.display && obj !== game.targetingSystem) {
+        game.gameLoop.unregisterObject(obj);
+      }
+    }
+  }
+
+  loadLevel (game) {
+    this.cleanGameLoop(game);
+
     // add grid first so it shows in back
     this.addWorldGrid(game.gameLoop);
 

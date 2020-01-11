@@ -22,7 +22,9 @@ export function initialize() {
   GAME.state = STATE;
 
   // add the targeting object to the main gameloop
-  GAMELOOP.registerObject(new TargetingSystem());
+  let TARGETING = new TargetingSystem()
+  GAMELOOP.registerObject(TARGETING);
+  GAME.targetingSystem = TARGETING;
 
   // start GameLoop
   GAMELOOP.start();
