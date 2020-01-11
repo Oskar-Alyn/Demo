@@ -4,6 +4,15 @@ export class Graphic {
   constructor(parts, lineWidth) {
     this.parts = parts;
     this.lineWidth = lineWidth;
+
+    this.maxPoint = 0;
+    for (let i = 0; i < this.parts.length; i++) {
+      for (let ii = 0; ii < this.parts[i].length; ii++) {
+        let coordinate = this.parts[i][ii];
+        if (coordinate[0] > this.maxPoint) { this.maxPoint = coordinate[0]; }
+        if (coordinate[1] > this.maxPoint) { this.maxPoint = coordinate[1]; }
+      }
+    }
   }
 
   // scales graphic to scale number

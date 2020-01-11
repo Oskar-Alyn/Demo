@@ -18,6 +18,6 @@ export const BASIC_LASER = {
   color: '#FFFFFF',
   behaviour: {
     aiFunction: ais.PROJECTILE_AI,
-    detectionDistance: 2,
+    detectionDistance: 200,
   },
 }

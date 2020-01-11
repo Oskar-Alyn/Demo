@@ -55,7 +55,8 @@ export const COLLECTIBLE_AI = function(aShip, ai, game) {
 
 export const PROJECTILE_AI = function(aShip, ai, game) {
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
-    if (ai.targetDistance < ai.detectionRange) {
+    let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
+    if (ai.targetDistance < hitCircle) {
       ai.aiTarget.shield -= 1;
       game.gameLoop.unregisterObject(aShip);
     }
