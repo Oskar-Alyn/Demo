@@ -18,6 +18,7 @@ export class Ship extends GameObject {
 
     this.shield = template.shieldMax;
     this.shieldMax = template.shieldMax;
+    this.shieldRegen = template.shieldRegen;
     this.shieldRecharge = 0;
     this.drop = template.drop;
 
@@ -60,13 +61,13 @@ export class Ship extends GameObject {
   chargeShield() {
     if (this.shield < this.shieldMax ) {
       if (this.shieldRecharge <= 0) {
-        this.shieldRecharge = 30;
+        this.shieldRecharge = this.shieldRegen;
         this.shield += 1;
       } else {
         this.shieldRecharge -= 1;
       }
     } else {
-      this.shieldRecharge = 80;
+      this.shieldRecharge = 60;
     }
   }
 

@@ -13,6 +13,7 @@ export const BASE_1 = {
       detectionDistance: 1,
     },
     shieldMax: 50,
+    shieldRegen: 20,
     weapon: null,
     drop: objects.CREDIT,
 };
@@ -27,6 +28,7 @@ export const FIGHTER_1 = {
       detectionDistance: 200,
     },
     shieldMax: 3,
+    shieldRegen: 30,
     weapon: weapons.FIGHTER_1_WEAPON,
     drop: objects.CREDIT,
 };
@@ -41,6 +43,7 @@ export const FIGHTER_2 = {
       detectionDistance: 200,
     },
     shieldMax: 7,
+    shieldRegen: 30,
     weapon: weapons.FIGHTER_2_WEAPON,
     drop: objects.CREDIT,
 };
