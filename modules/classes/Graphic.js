@@ -22,14 +22,23 @@ export class Graphic {
 
   // draws the graphic to the canvas
   draw(aGameObject, display) {
+    let context = display.context;
+
+    // adjust for relative camera
     let scaledGraphic = this.scaleGraphic(this.parts, (aGameObject.scale * display.worldScale));
     let adjustedPosition = rotateCoord([aGameObject.x - display.cameraX, aGameObject.y - display.cameraY], -1 * display.cameraR);
     let adjustedX = adjustedPosition[0] * display.worldScale;
     let adjustedY = adjustedPosition[1] * display.worldScale;
     let adjustedR = aGameObject.r - display.cameraR + (3.14159 * 2);
 
+    // showing shields
+    if (typeof aGameObject.shield !== 'undefined') {
+      context.globalAlpha = aGameObject.shield / aGameObject.shieldMax;
+    } else {
+      context.globalAlpha = 1;
+    }
+
     for (let i = 0; i < scaledGraphic.length; i++) {
-      let context = display.context;
       let currentPart = scaledGraphic[i];
       let currentCoordinate = rotateCoord(currentPart[0], adjustedR);
 

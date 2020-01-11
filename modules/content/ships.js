@@ -12,7 +12,7 @@ export const BASE_1 = {
       aiFunction: ais.BASE_AI,
       detectionDistance: 1,
     },
-    shieldMax: 20,
+    shieldMax: 50,
     weapon: null,
     drop: objects.CREDIT,
 };
@@ -26,7 +26,7 @@ export const FIGHTER_1 = {
       aiFunction: ais.FIGHTER_AI,
       detectionDistance: 200,
     },
-    shieldMax: 2,
+    shieldMax: 3,
     weapon: weapons.FIGHTER_1_WEAPON,
     drop: objects.CREDIT,
 };
