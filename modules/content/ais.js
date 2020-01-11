@@ -63,8 +63,4 @@ export const PROJECTILE_AI = function(aShip, ai, game) {
   }
 
   aShip.push(aShip.r + 3.14159 * -0.5, 0.15);
-
-  // TEMPORARY // FIX
-  if (aShip.x > 1500 || aShip.x < -1500) {game.gameLoop.unregisterObject(aShip);}
-  if (aShip.y > 1500 || aShip.y < -1500) {game.gameLoop.unregisterObject(aShip);}
 };

@@ -4,7 +4,8 @@ import { Ship } from './Ship.js';
 import { Spawner } from './Spawner.js';
 import { GRID_SQUARE_SIZE, HUD_COLOR } from '../globalConstants.js';
 import { KeyboardController } from './KeyboardController.js';
-import { Ai } from './ai.js';
+import { Ai } from './Ai.js';
+import { EdgeBinder } from './EdgeBinder.js';
 
 export class Level {
   constructor(levelTemplate) {
@@ -39,6 +40,9 @@ export class Level {
   loadLevel(game) {
     // add grid first so it shows in back
     this.addWorldGrid(game.gameLoop);
+
+    // bind edges to grid size
+    game.gameLoop.registerObject(new EdgeBinder(GRID_SQUARE_SIZE * this.gridSize * 1.5));
 
     // spawn designated ships
     for (let i = 0; i < this.spawns.length; i++) {
