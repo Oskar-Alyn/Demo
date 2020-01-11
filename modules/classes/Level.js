@@ -13,6 +13,7 @@ export class Level {
     this.gridSize = levelTemplate.gridSize;
   }
 
+  // creates a grid graphic based on two parameters
   generateGrid(squareSize, gridSize) {
     let gridGraphic = [];
     let lineLength = squareSize * (gridSize - 1);
@@ -27,6 +28,7 @@ export class Level {
     return new Graphic(gridGraphic, 1);
   }
 
+  // puts the level grid into the world
   addWorldGrid(gameLoop) {
     let grid = new GameObject({
       graphic: this.generateGrid(GRID_SQUARE_SIZE, this.gridSize),
@@ -37,6 +39,7 @@ export class Level {
     gameLoop.registerObject(grid);
   }
 
+  // cleans out old objects for new level
   cleanGameLoop (game) {
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
       let obj = game.gameLoop.objectsToRun[i];
@@ -47,6 +50,7 @@ export class Level {
     }
   }
 
+  // loads the level from the template
   loadLevel (game) {
     this.cleanGameLoop(game);
 
@@ -54,7 +58,7 @@ export class Level {
     this.addWorldGrid(game.gameLoop);
 
     // bind edges to grid size
-    game.gameLoop.registerObject(new EdgeBinder(GRID_SQUARE_SIZE * this.gridSize * 1.5));
+    game.gameLoop.registerObject(new EdgeBinder(GRID_SQUARE_SIZE * this.gridSize * 2));
 
     // spawn designated ships
     for (let i = 0; i < this.spawns.length; i++) {

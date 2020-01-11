@@ -57,17 +57,18 @@ export class Display {
   run (game) {
     this.state = game.state; // REMOVE, needed for keypress
 
-    this.worldScale = game.state.worldScale;
-
-    this.zFactor = Math.sin(3.14159 / 2 * this.cameraTilt);
-    this.yFactor = Math.cos(3.14159 / 2 * this.cameraTilt);
+    this.worldScale = game.state.worldScale; // used by graphics
 
     this.updateCamera(game);
 
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+    this.zFactor = Math.sin(3.14159 / 2 * this.cameraTilt);
+    this.yFactor = Math.cos(3.14159 / 2 * this.cameraTilt);
     this.y0 = (this.canvas.height / 2) * (1 + (this.cameraTilt * 0.8));
 
+    // reset canvas
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    // draw all objects
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
       if (typeof game.gameLoop.objectsToRun[i].graphic !== 'undefined') {
         game.gameLoop.objectsToRun[i].graphic.draw(game.gameLoop.objectsToRun[i], this);

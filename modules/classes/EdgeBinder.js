@@ -14,9 +14,11 @@ export class EdgeBinder {
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
       let obj = game.gameLoop.objectsToRun[i];
       if (typeof obj.x !== 'undefined') {
+        
         // wrap
         let distance = pythagorean(obj.x, obj.y, 0, 0);
         if (distance > this.edgeDistance) {
+
           // destroy lasers
           if (typeof obj.behaviour !== 'undefined' && obj.behaviour !== null) {
             if (obj.behaviour.aiFunction == PROJECTILE_AI) {

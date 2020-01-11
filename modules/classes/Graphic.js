@@ -5,14 +5,21 @@ export class Graphic {
     this.parts = parts;
     this.lineWidth = lineWidth;
 
-    this.maxPoint = 0;
+    this.maxPoint = this.findMaxPoint();
+  }
+
+  // finds the highest number in the graphic
+  findMaxPoint () {
+    let returnNumber = 0;
     for (let i = 0; i < this.parts.length; i++) {
       for (let ii = 0; ii < this.parts[i].length; ii++) {
         let coordinate = this.parts[i][ii];
-        if (coordinate[0] > this.maxPoint) { this.maxPoint = coordinate[0]; }
-        if (coordinate[1] > this.maxPoint) { this.maxPoint = coordinate[1]; }
+        if (coordinate[0] > returnNumber) { returnNumber = coordinate[0]; }
+        if (coordinate[1] > returnNumber) { returnNumber = coordinate[1]; }
       }
     }
+
+    return returnNumber;
   }
 
   // scales graphic to scale number
@@ -33,7 +40,7 @@ export class Graphic {
   draw(aGameObject, display) {
     let context = display.context;
 
-    // adjust for relative camera
+    // setup adjusted variables for relative camera
     let scaledGraphic = this.scaleGraphic(this.parts, (aGameObject.scale * display.worldScale));
     let adjustedPosition = rotateCoord([aGameObject.x - display.cameraX, aGameObject.y - display.cameraY], -1 * display.cameraR);
     let adjustedX = adjustedPosition[0] * display.worldScale;
@@ -47,6 +54,7 @@ export class Graphic {
       context.globalAlpha = 1;
     }
 
+    // draw the graphic
     for (let i = 0; i < scaledGraphic.length; i++) {
       let currentPart = scaledGraphic[i];
       let currentCoordinate = rotateCoord(currentPart[0], adjustedR);

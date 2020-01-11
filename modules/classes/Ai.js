@@ -1,3 +1,5 @@
+import { pythagorean } from '../mathExtention.js';
+
 export class Ai {
   constructor (template) {
     this.aiFunction = template.aiFunction;
@@ -14,10 +16,7 @@ export class Ai {
     }
 
     if (this.aiTarget !== null) {
-      // update distance
-      let xDistance = Math.abs(aShip.x - this.aiTarget.x);
-      let yDistance = Math.abs(aShip.y - this.aiTarget.y);
-      this.targetDistance = Math.sqrt((xDistance * xDistance) + (yDistance * yDistance));
+      this.targetDistance = pythagorean(aShip.x, aShip.y, this.aiTarget.x, this.aiTarget.y);
     }
 
     this.aiFunction(aShip, this, game);

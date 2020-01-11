@@ -6,10 +6,12 @@ export class Spawner {
   constructor (template, edgeDistance, team) {
     this.frequency = template.frequency;
     this.frequencyNormalizer = 0;
+
     this.spawnType = template.spawnType;
     this.spawnTemplate = template.spawnTemplate;
-    this.onlyEdges = template.onlyEdges;
     this.team = team;
+
+    this.onlyEdges = template.onlyEdges;
     this.edgeDistance = edgeDistance;
   }
 

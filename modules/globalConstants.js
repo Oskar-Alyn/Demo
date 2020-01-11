@@ -8,6 +8,9 @@ export const MIN_CAMERA_ANGLE = 0.5;
 export const HORIZONTAL_CAMERA_LAG = 15;
 export const VERTICAL_CAMERA_LAG = 40;
 
+export const DEFAULT_CAMERA_ANGLE = 0.5;
+export const DEFAULT_WORLD_SCALE = 8;
+
 export const GRID_SQUARE_SIZE = 40;
 
 export const HUD_COLOR = '#606060';

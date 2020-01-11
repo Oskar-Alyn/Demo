@@ -33,9 +33,16 @@ export class Ship extends GameObject {
     this.turningRight = false;
     this.useWeapon = false;
 
+    // model detail
     this.offset = 3.14159 * -0.5;
   }
 
+  // returns a functional rotation value
+  getR () {
+    return this.r + this.offset;
+  }
+
+  // moves the ship according to behaviour and stats
   move() {
     if (this.movingForward) {
       this.push(this.r + this.offset, this.speed)
@@ -52,12 +59,14 @@ export class Ship extends GameObject {
     }
   }
 
+  // runs weapons if they exist
   weapons(game) {
     if (this.weapon !== null && this.useWeapon) {
       this.weapon(this, game);
     }
   }
 
+  // runs shield regen mechanic
   chargeShield() {
     if (this.shield < this.shieldMax ) {
       if (this.shieldRecharge <= 0) {
@@ -71,6 +80,7 @@ export class Ship extends GameObject {
     }
   }
 
+  // does death and loot behaviour
   deathCheck(game) {
     if (this.shield <= 0) {
       game.gameLoop.unregisterObject(this);
@@ -88,7 +98,9 @@ export class Ship extends GameObject {
     this.chargeShield();
     this.weapons(game);
     this.move();
+    
     super.run(game);
+
     this.deathCheck(game); // needs to be last, may unregister ship
   }
 }
