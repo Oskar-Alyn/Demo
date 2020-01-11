@@ -22,6 +22,7 @@ export class Ship extends GameObject {
 
     this.weapon = template.weapon;
     this.weaponCooldown = 0;
+    this.weaponState = 0;
 
     // control systems
     this.movingForward = false;
