@@ -5,7 +5,8 @@ export const CANVAS_ID = 'gameDisplay';
 export const CANVAS_CONTEXT = '2d';
 
 export const MIN_CAMERA_ANGLE = 0.5;
-export const CAMERA_LAG = 15;
+export const HORIZONTAL_CAMERA_LAG = 15;
+export const VERTICAL_CAMERA_LAG = 40;
 
 export const GRID_SQUARE_SIZE = 40;
 
