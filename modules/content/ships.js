@@ -21,10 +21,10 @@ export const FIGHTER_1 = {
     graphic: graphics.fighter_1_graphic,
     scale: 1.5,
     speed: 0.02,
-    rotationSpeed: 0.002,
+    rotationSpeed: 0.0015,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 4000,
+      detectionDistance: 200,
     },
     shieldMax: 2,
     weapon: weapons.FIGHTER_1_WEAPON,

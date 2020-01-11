@@ -8,7 +8,7 @@ export const CREDIT = {
   color: '#FFFFFF',
   behaviour: {
     aiFunction: ais.COLLECTIBLE_AI,
-    detectionDistance: 40,
+    detectionDistance: 30,
   },
 }
 
@@ -18,6 +18,6 @@ export const BASIC_LASER = {
   color: '#FFFFFF',
   behaviour: {
     aiFunction: ais.PROJECTILE_AI,
-    detectionDistance: 1.1,
+    detectionDistance: 2,
   },
 }

@@ -20,7 +20,7 @@ export const ENEMY_SPAWNER = new Spawner({
 
 export const GOOD_SPAWNER = new Spawner({
   spawnType: 'Ships',
-  frequency: 550,
+  frequency: 500,
   spawnTemplate: ships.FIGHTER_1,
   team: teams.BLUE,
   onlyEdges: false,

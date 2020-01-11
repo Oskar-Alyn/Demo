@@ -5,6 +5,7 @@ import { GameObject } from './GameObject.js';
 export class Spawner {
   constructor (template, edgeDistance) {
     this.frequency = template.frequency;
+    this.frequencyNormalizer = 0;
     this.spawnType = template.spawnType;
     this.spawnTemplate = template.spawnTemplate;
     this.onlyEdges = template.onlyEdges;
@@ -13,7 +14,8 @@ export class Spawner {
   }
 
   run (game) {
-    if (RN(0, this.frequency) == 0) {
+    if (RN(0, this.frequency - this.frequencyNormalizer) == 0) {
+      this.frequencyNormalizer = 0;
       let spawn;
 
       if (this.spawnType == 'Ships') {
@@ -52,6 +54,8 @@ export class Spawner {
       }
 
       game.gameLoop.registerObject(spawn);
+    } else {
+      this.frequencyNormalizer += 1;
     }
   }
 }

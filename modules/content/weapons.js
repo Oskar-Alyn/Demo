@@ -18,7 +18,7 @@ function spawnProjectile(aTemplate, aShip) {
 
 export const FIGHTER_1_WEAPON = function(aShip, game) {
   if (aShip.weaponCooldown ==  0) {
-    aShip.weaponCooldown = 10;
+    aShip.weaponCooldown = 5;
 
     // spawn a laser
     let laser = spawnProjectile(objects.BASIC_LASER, aShip);

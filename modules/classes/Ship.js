@@ -60,10 +60,12 @@ export class Ship extends GameObject {
     if (this.shield <= 0) {
       game.gameLoop.unregisterObject(this);
 
-      let drop = new GameObject(this.drop);
-      drop.x = this.x;
-      drop.y = this.y;
-      game.gameLoop.registerObject(drop);
+      if (this.team != game.player.team) {
+        let drop = new GameObject(this.drop);
+        drop.x = this.x;
+        drop.y = this.y;
+        game.gameLoop.registerObject(drop);
+      }
     }
   }
 

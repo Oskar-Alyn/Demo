@@ -12,5 +12,5 @@ export const GRID_SQUARE_SIZE = 40;
 export const HUD_COLOR = '#606060';
 
 // Physics constants
-export const ROTATION_FRICTION = 0.97;
+export const ROTATION_FRICTION = 0.95;
 export const LINEAR_FRICTION = 0.98;
