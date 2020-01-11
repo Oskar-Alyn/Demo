@@ -29,16 +29,18 @@ export class Ship extends GameObject {
     this.turningLeft = false;
     this.turningRight = false;
     this.useWeapon = false;
+
+    this.offset = 3.14159 * -0.5;
   }
 
   move() {
     if (this.movingForward) {
-      this.Vx += Math.cos(this.r) * this.speed;;
-      this.Vy += Math.sin(this.r) * this.speed;;
+      this.Vx += Math.cos(this.r + this.offset) * this.speed;;
+      this.Vy += Math.sin(this.r + this.offset) * this.speed;;
     }
     if (this.movingBackward) {
-      this.Vx -= Math.cos(this.r) * this.speed;;
-      this.Vy -= Math.sin(this.r) * this.speed;;
+      this.Vx -= Math.cos(this.r + this.offset) * this.speed;;
+      this.Vy -= Math.sin(this.r + this.offset) * this.speed;;
     }
     if (this.turningLeft) {
       this.Vr -= this.rotationSpeed;;

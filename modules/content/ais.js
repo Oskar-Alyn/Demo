@@ -5,17 +5,15 @@ export const BASE_AI = function(aShip, ai, game) {
 };
 
 export const FIGHTER_AI = function(aShip, ai, game) {
-  aShip.useWeapon = (ai.targetDistance < 1000);
-
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null && ai.aiTarget.shield > 0) {
-    let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y);
+    let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y) + 3.14159 * 0.5;
 
     let angleOff = (targetAngle - aShip.r) % (3.1415 * 2);
 
-    if (angleOff < -0.1) {
+    if (angleOff < -0.018) {
       aShip.turningLeft = true;
       aShip.turningRight = false;
-    } else if (angleOff > 0.1) {
+    } else if (angleOff > 0.018) {
       aShip.turningRight = true;
       aShip.turningLeft = false;
     } else {
@@ -25,12 +23,14 @@ export const FIGHTER_AI = function(aShip, ai, game) {
 
     aShip.useWeapon = (ai.targetDistance < 1000);
     aShip.movingForward = true;
+
   } else {
     aShip.movingForward = false;
     aShip.turningRight = false;
     aShip.turningLeft = false;
     aShip.useWeapon = false;
     ai.targetDistance = ai.detectionRange;
+
   }
 };
 
@@ -38,9 +38,9 @@ export const COLLECTIBLE_AI = function(aShip, ai, game) {
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
     let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y);
 
-    if (ai.targetDistance > 10) {
-      aShip.Vx += Math.cos(targetAngle) * 0.5;;
-      aShip.Vy += Math.sin(targetAngle) * 0.5;;
+    if (ai.targetDistance > 1) {
+      aShip.Vx += Math.cos(targetAngle) * 0.05;;
+      aShip.Vy += Math.sin(targetAngle) * 0.05;;
     } else {
       game.gameLoop.unregisterObject(aShip);
       game.state.playerCredits += 1;
@@ -58,8 +58,8 @@ export const PROJECTILE_AI = function(aShip, ai, game) {
     }
   }
 
-  aShip.Vx += Math.cos(aShip.r) * 1.5;;
-  aShip.Vy += Math.sin(aShip.r) * 1.5;;
+  aShip.Vx += Math.cos(aShip.r + 3.14159 * -0.5) * 0.15;;
+  aShip.Vy += Math.sin(aShip.r + 3.14159 * -0.5) * 0.15;;
 
   // TEMPORARY // FIX
   if (aShip.x > 8000 || aShip.x < -8000) {game.gameLoop.unregisterObject(aShip);}

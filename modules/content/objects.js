@@ -8,16 +8,16 @@ export const CREDIT = {
   color: '#FFFFFF',
   behaviour: {
     aiFunction: ais.COLLECTIBLE_AI,
-    detectionDistance: 400,
+    detectionDistance: 40,
   },
 }
 
 export const BASIC_LASER = {
   graphic: graphics.basic_laser_graphic,
-  scale: 1,
+  scale: 2,
   color: '#FFFFFF',
   behaviour: {
     aiFunction: ais.PROJECTILE_AI,
-    detectionDistance: 12,
+    detectionDistance: 1.1,
   },
 }

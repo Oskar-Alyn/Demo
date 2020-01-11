@@ -5,7 +5,7 @@ import * as ais from './ais.js';
 
 export const BASE_1 = {
     graphic: graphics.base_1_graphic,
-    scale: 1,
+    scale: 2,
     speed: 0,
     rotationSpeed: 0.0001,
     aiType: {
@@ -20,8 +20,8 @@ export const BASE_1 = {
 export const FIGHTER_1 = {
     graphic: graphics.fighter_1_graphic,
     scale: 1.5,
-    speed: 0.2,
-    rotationSpeed: 0.005,
+    speed: 0.02,
+    rotationSpeed: 0.002,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
       detectionDistance: 4000,

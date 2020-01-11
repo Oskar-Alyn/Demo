@@ -5,7 +5,7 @@ import * as spawners from './spawners.js';
 import * as objects from './objects.js';
 
 export const TEST_LEVEL = new Level({
-  gridSize: 3,
+  gridSize: 5,
   spawns: [
     {type: 'Player', template: ships.FIGHTER_1, team: teams.BLUE},
     {type: 'Ship', template: ships.BASE_1, team: teams.BLUE},

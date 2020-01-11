@@ -54,7 +54,7 @@ export class Level {
         spawn.behaviour = new Ai({aiFunction: function(aShip, ai){ return null; }, detectionDistance: 1});
         new KeyboardController(spawn);
         game.player = spawn;
-        game.gameLoop.objectsToRun[0].cameraFollowObject = spawn; // FIX TO MORE ROBUST SYSTEM
+        game.display.cameraFollowObject = spawn;
 
       } else if (spawnInfo.type == 'Spawner') {
         spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE)
