@@ -35,12 +35,11 @@ export class Ship extends GameObject {
 
   move() {
     if (this.movingForward) {
-      this.Vx += Math.cos(this.r + this.offset) * this.speed;;
-      this.Vy += Math.sin(this.r + this.offset) * this.speed;;
+      this.push(this.r + this.offset, this.speed)
     }
     if (this.movingBackward) {
-      this.Vx -= Math.cos(this.r + this.offset) * this.speed;;
-      this.Vy -= Math.sin(this.r + this.offset) * this.speed;;
+      this.push(this.r + this.offset, -0.5 * this.speed)
+      this.Vr *= 0.4;
     }
     if (this.turningLeft) {
       this.Vr -= this.rotationSpeed;;

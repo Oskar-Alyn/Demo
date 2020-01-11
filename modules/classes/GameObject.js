@@ -36,6 +36,11 @@ export class GameObject {
     }
   }
 
+  push (direction, force) {
+    this.Vx += Math.cos(direction) * force;;
+    this.Vy += Math.sin(direction) * force;;
+  }
+
   doMotion () {
     this.x += this.Vx;
     this.y += this.Vy;

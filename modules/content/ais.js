@@ -39,8 +39,7 @@ export const COLLECTIBLE_AI = function(aShip, ai, game) {
     let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y);
 
     if (ai.targetDistance > 1) {
-      aShip.Vx += Math.cos(targetAngle) * 0.05;;
-      aShip.Vy += Math.sin(targetAngle) * 0.05;;
+      aShip.push(targetAngle, 0.05);
     } else {
       game.gameLoop.unregisterObject(aShip);
       game.state.playerCredits += 1;
@@ -58,8 +57,7 @@ export const PROJECTILE_AI = function(aShip, ai, game) {
     }
   }
 
-  aShip.Vx += Math.cos(aShip.r + 3.14159 * -0.5) * 0.15;;
-  aShip.Vy += Math.sin(aShip.r + 3.14159 * -0.5) * 0.15;;
+  aShip.push(aShip.r + 3.14159 * -0.5, 0.15);
 
   // TEMPORARY // FIX
   if (aShip.x > 8000 || aShip.x < -8000) {game.gameLoop.unregisterObject(aShip);}
