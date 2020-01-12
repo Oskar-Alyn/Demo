@@ -48,11 +48,7 @@ export class Graphic {
     let adjustedR = aGameObject.r - display.cameraR + (3.14159 * 2);
 
     // showing shields
-    if (typeof aGameObject.shield !== 'undefined') {
-      context.globalAlpha = aGameObject.shield / aGameObject.shieldMax;
-    } else {
-      context.globalAlpha = 1;
-    }
+    context.globalAlpha = (typeof aGameObject.shield !== 'undefined' ? aGameObject.shield / aGameObject.shieldMax : 1);
 
     // draw the graphic
     for (let i = 0; i < scaledGraphic.length; i++) {

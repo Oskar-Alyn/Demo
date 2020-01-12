@@ -3,7 +3,6 @@ import { Graphic } from './Graphic.js';
 import { Ship } from './Ship.js';
 import { Spawner } from './Spawner.js';
 import { GRID_SQUARE_SIZE, HUD_COLOR } from '../globalConstants.js';
-import { KeyboardController } from './KeyboardController.js';
 import { Ai } from './Ai.js';
 import { EdgeBinder } from './EdgeBinder.js';
 
@@ -62,41 +61,32 @@ export class Level {
 
     // spawn designated ships
     for (let i = 0; i < this.spawns.length; i++) {
-      let spawnInfo = this.spawns[i];
+      let info = this.spawns[i];
       let spawn;
 
       // differentiate possible spawn types
-      if (spawnInfo.type == 'Ship') {
-        spawn = new Ship(spawnInfo.template, spawnInfo.team);
+      if (info.type == 'Ship') {
+        spawn = new Ship(info.template, info.team);
 
-      } else if (spawnInfo.type == 'Player') {
-        spawn = new Ship(spawnInfo.template, spawnInfo.team);
-        spawn.behaviour = new Ai({aiFunction: function(aShip, ai){ return null; }, detectionDistance: 1});
-        new KeyboardController(spawn);
+      } else if (info.type == 'Player') {
+        spawn = new Ship(info.template, info.team);
+        spawn.behaviour = new Ai({aiFunction: function() {}, detectionDistance: 0});
         game.player = spawn;
         game.display.cameraFollowObject = spawn;
 
-      } else if (spawnInfo.type == 'Spawner') {
-        let effectiveTeam;
-        if (typeof spawnInfo.team !== 'undefined') {
-          effectiveTeam = spawnInfo.team;
-        } else {
-          effectiveTeam = null;
-        }
-        spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE, effectiveTeam);
+      } else if (info.type == 'Spawner') {
+        let effectiveTeam = (typeof info.team !== 'undefined' ? info.team : null );
+        spawn = new Spawner(info.template, this.gridSize * GRID_SQUARE_SIZE, effectiveTeam);
 
-      } else if (spawnInfo.type == 'Object') {
-        spawn = new GameObject(spawnInfo.template)
+      } else if (info.type == 'Object') {
+        spawn = new GameObject(info.template);
 
-      } else {
-        console.log('Not a valid type for levels: ' + spawnInfo.type);
-        return null;
       }
 
       // set location according to info
-      if (typeof(spawnInfo.x) !== 'undefined') { spawn.x = spawnInfo.x };
-      if (typeof(spawnInfo.y) !== 'undefined') { spawn.y = spawnInfo.y };
-      if (typeof(spawnInfo.r) !== 'undefined') { spawn.r = spawnInfo.r };
+      if (typeof(info.x) !== 'undefined') { spawn.x = info.x };
+      if (typeof(info.y) !== 'undefined') { spawn.y = info.y };
+      if (typeof(info.r) !== 'undefined') { spawn.r = info.r };
 
       // add the spawn to the game
       game.gameLoop.registerObject(spawn);
