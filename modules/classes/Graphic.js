@@ -45,7 +45,7 @@ export class Graphic {
     let adjustedPosition = rotateCoord([aGameObject.x - display.cameraX, aGameObject.y - display.cameraY], -1 * display.cameraR);
     let adjustedX = adjustedPosition[0] * display.worldScale;
     let adjustedY = adjustedPosition[1] * display.worldScale;
-    let adjustedR = aGameObject.r - display.cameraR + (3.14159 * 2);
+    let adjustedR = aGameObject.r - display.cameraR;
 
     // showing shields
     context.globalAlpha = (typeof aGameObject.shield !== 'undefined' ? aGameObject.shield / aGameObject.shieldMax : 1);
@@ -73,6 +73,19 @@ export class Graphic {
         }
       }
       context.stroke();
+
+    }
+
+    // draw text
+    if (display.debugMode) {
+      context.fillStyle = aGameObject.color;
+      context.font = "30px Arial";
+      if ( typeof aGameObject.text !== 'undefined' ) {
+        context.fillText(
+          aGameObject.text,
+          display.x0 + adjustedX - 8,
+          20 + (this.maxPoint * aGameObject.scale * display.worldScale) + display.y0 + (display.yFactor * adjustedY));
+      }
     }
   }
 }

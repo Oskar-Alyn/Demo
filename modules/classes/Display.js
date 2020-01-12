@@ -18,7 +18,9 @@ export class Display {
     this.y0;
 
     this.zFactor;
-    this.yFactor
+    this.yFactor;
+
+    this.debugMode = false;
   }
 
   updateCamera(game) {
@@ -64,11 +66,5 @@ export class Display {
         game.gameLoop.objectsToRun[i].graphic.draw(game.gameLoop.objectsToRun[i], this);
       }
     }
-
-    // TEMPORARY FIX
-    this.context.fillStyle = "white";
-    this.context.font = "30px Arial";
-    this.context.fillText("Credits: " + game.state.playerCredits, 10, 40);
-    this.context.fillText("Player Shield: " + game.player.shield, 10, 70);
   }
 }

@@ -39,16 +39,16 @@ export class Ship extends GameObject {
 
   // returns a functional rotation value
   getR () {
-    return this.r + this.offset;
+    return (this.r + this.offset);
   }
 
   // moves the ship according to behaviour and stats
   move() {
     if (this.movingForward) {
-      this.push(this.r + this.offset, this.speed)
+      this.push(this.getR(), this.speed)
     }
     if (this.movingBackward) {
-      this.push(this.r + this.offset, -0.5 * this.speed)
+      this.push(this.getR(), -0.5 * this.speed)
       this.Vr *= 0.4;
     }
     if (this.turningLeft) {
@@ -95,10 +95,12 @@ export class Ship extends GameObject {
   }
 
   run(game) {
+    this.text = this.shield;
+
     this.chargeShield();
     this.weapons(game);
     this.move();
-    
+
     super.run(game);
 
     this.deathCheck(game); // needs to be last, may unregister ship
