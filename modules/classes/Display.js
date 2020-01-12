@@ -18,15 +18,7 @@ export class Display {
     this.y0;
 
     this.zFactor;
-    this.yFactor;
-
-    document.addEventListener('keypress', e => this.logKeyPress(e));
-    this.state;
-  }
-
-  logKeyPress(e) {
-    if (e.keyCode == 43) { this.state.worldScale += 1; };
-    if (e.keyCode == 45) { if (this.state.worldScale > 1) this.state.worldScale -= 1; };
+    this.yFactor
   }
 
   updateCamera(game) {
@@ -55,8 +47,6 @@ export class Display {
   }
 
   run (game) {
-    this.state = game.state; // REMOVE, needed for keypress
-
     this.worldScale = game.state.worldScale; // used by graphics
 
     this.updateCamera(game);

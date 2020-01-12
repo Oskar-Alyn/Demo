@@ -5,6 +5,7 @@ export class Game {
     this.display;
     this.targetingSystem;
     this.state;
+    this.keyboardController;
 
     // diagetic
     this.player;

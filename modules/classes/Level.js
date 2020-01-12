@@ -44,7 +44,7 @@ export class Level {
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
       let obj = game.gameLoop.objectsToRun[i];
 
-      if (obj !== game.display && obj !== game.targetingSystem) {
+      if (obj !== game.display && obj !== game.targetingSystem && obj !== game.keyboardController) {
         game.gameLoop.unregisterObject(obj);
       }
     }
