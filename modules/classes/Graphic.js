@@ -2,7 +2,6 @@ import {
   rotateCoord,
   pythagorean,
   angleTo,
-  perceptualFactor
 } from '../mathExtention.js';
 
 export class Graphic {
