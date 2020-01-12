@@ -1,4 +1,9 @@
-import { rotateCoord } from '../mathExtention.js';
+import {
+  rotateCoord,
+  pythagorean,
+  angleTo,
+  perceptualFactor
+} from '../mathExtention.js';
 
 export class Graphic {
   constructor(parts, lineWidth) {
@@ -59,12 +64,14 @@ export class Graphic {
       context.lineWidth = this.lineWidth;
       context.beginPath();
 
+      // actual drawing
       for (let ii = 0; ii < currentPart.length; ii++) {
         currentCoordinate = rotateCoord(currentPart[ii], adjustedR);
-        let xCoord = display.x0 + adjustedX + currentCoordinate[0];
-        let yCoord = display.y0;
-        yCoord += (display.yFactor * (adjustedY + currentCoordinate[1]));
+        let xCoord = adjustedX + currentCoordinate[0];
+        xCoord += display.x0;
+        let yCoord = display.yFactor * (adjustedY + currentCoordinate[1]);
         yCoord -= (currentCoordinate[2] * display.zFactor);
+        yCoord += display.y0;
 
         if (ii == 0) {
           context.moveTo(xCoord, yCoord);

@@ -12,7 +12,7 @@ export class Display {
     this.cameraX = 0;
     this.cameraY = 0;
     this.cameraR = 0;
-    this.cameraTilt = 1;
+    this.cameraTilt = consts.DEFAULT_CAMERA_ANGLE;
 
     this.x0 = this.canvas.width / 2;
     this.y0;
