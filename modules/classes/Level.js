@@ -77,7 +77,13 @@ export class Level {
         game.display.cameraFollowObject = spawn;
 
       } else if (spawnInfo.type == 'Spawner') {
-        spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE, spawnInfo.team);
+        let effectiveTeam;
+        if (typeof spawnInfo.team !== 'undefined') {
+          effectiveTeam = spawnInfo.team;
+        } else {
+          effectiveTeam = null;
+        }
+        spawn = new Spawner(spawnInfo.template, this.gridSize * GRID_SQUARE_SIZE, effectiveTeam);
 
       } else if (spawnInfo.type == 'Object') {
         spawn = new GameObject(spawnInfo.template)
