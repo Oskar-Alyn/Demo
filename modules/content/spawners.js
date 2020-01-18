@@ -19,7 +19,7 @@ export const FIGHTER_1_SPAWNER = new Spawner({
 
 export const FIGHTER_2_SPAWNER = new Spawner({
   spawnType: 'Ships',
-  frequency: 5000,
+  frequency: 3000,
   spawnTemplate: ships.FIGHTER_2,
   onlyEdges: false,
 });

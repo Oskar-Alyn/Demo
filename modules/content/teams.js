@@ -9,3 +9,11 @@ export const RED = {
 export const PURPLE = {
   color: '#FF00FF',
 }
+
+export const GREEN = {
+  color: '#20FF20',
+}
+
+export const WHITE = {
+  color: '#FFFFFF',
+}

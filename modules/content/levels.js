@@ -12,6 +12,7 @@ export const TEST_LEVEL = new Level({
     // {type: 'Spawner', template: spawners.CREDIT_SPAWNER},
     {type: 'Spawner', template: spawners.FIGHTER_1_SPAWNER, team: teams.BLUE},
     {type: 'Spawner', template: spawners.FIGHTER_1_SPAWNER, team: teams.RED},
+    {type: 'Spawner', template: spawners.FIGHTER_1_SPAWNER, team: teams.GREEN},
     {type: 'Spawner', template: spawners.FIGHTER_2_SPAWNER, team: teams.PURPLE},
 
     {type: 'Ship', template: ships.MULTIPART, team: teams.BLUE},
