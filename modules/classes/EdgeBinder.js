@@ -4,6 +4,8 @@ import {
   angleTo,
 } from '../mathExtention.js';
 import { PROJECTILE_AI } from '../content/ais.js';
+import { PROJECTILE_AI_2 } from '../content/ais.js';
+import { PROJECTILE_AI_3 } from '../content/ais.js';
 
 export class EdgeBinder {
   constructor (edgeDistance) {
@@ -20,7 +22,7 @@ export class EdgeBinder {
         if (distance > this.edgeDistance) {
 
           if (typeof obj.behaviour !== 'undefined' && obj.behaviour !== null) {
-            if (obj.behaviour.aiFunction == PROJECTILE_AI) {
+            if (obj.behaviour.aiFunction == PROJECTILE_AI || obj.behaviour.aiFunction == PROJECTILE_AI_2 || obj.behaviour.aiFunction == PROJECTILE_AI_3) {
               // destroy lasers
               if (distance > this.edgeDistance + 100) {
                 game.gameLoop.unregisterObject(obj);

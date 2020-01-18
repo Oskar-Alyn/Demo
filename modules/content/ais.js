@@ -68,3 +68,27 @@ export const PROJECTILE_AI = function(aShip, ai, game) {
 
   aShip.push(aShip.r + Math.PI * -0.5, 0.15);
 };
+
+export const PROJECTILE_AI_2 = function(aShip, ai, game) {
+  if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
+    let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
+    if (ai.targetDistance < hitCircle) {
+      ai.aiTarget.shield -= 2;
+      game.gameLoop.unregisterObject(aShip);
+    }
+  }
+
+  aShip.push(aShip.r + Math.PI * -0.5, 0.15);
+};
+
+export const PROJECTILE_AI_3 = function(aShip, ai, game) {
+  if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
+    let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
+    if (ai.targetDistance < hitCircle) {
+      ai.aiTarget.shield -= 6;
+      game.gameLoop.unregisterObject(aShip);
+    }
+  }
+
+  aShip.push(aShip.r + Math.PI * -0.5, 0.15);
+};

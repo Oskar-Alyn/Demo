@@ -48,6 +48,36 @@ export const FIGHTER_2 = {
     drop: objects.CREDIT,
 };
 
+export const SKIRMISHER_1 = {
+    graphic: graphics.winged_1_graphic,
+    scale: 2,
+    speed: 0.024,
+    rotationSpeed: 0.0015,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 200,
+    },
+    shieldMax: 5,
+    shieldRegen: 20,
+    weapon: weapons.SKIRMISHER_1_WEAPON,
+    drop: objects.CREDIT,
+};
+
+export const HEAVY_1 = {
+    graphic: graphics.winged_1_graphic,
+    scale: 3,
+    speed: 0.024,
+    rotationSpeed: 0.0015,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 200,
+    },
+    shieldMax: 7,
+    shieldRegen: 20,
+    weapon: weapons.HEAVY_1_WEAPON,
+    drop: objects.CREDIT,
+};
+
 export const MULTIPART = {
     graphic: graphics.test_multi_ship,
     scale: 4,

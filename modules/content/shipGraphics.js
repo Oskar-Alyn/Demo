@@ -14,6 +14,21 @@ export const fighter_2_graphic = new Graphic([
   [[0, -2, 0], [2.5, 3, 0], [0, 1, 0], [-2.5, 3,  0], [0, -2, 0]], // flat shell
 ], 2);
 
+export const winged_1_graphic = new Graphic([
+  // main body
+  [[0, -2, 0], [0, 0, 0.5], [0, 1, 0], [0, 0, -0.5], [0, -2, 0]], // front to back shell
+  [[1, 0, 0], [0, 0, 0.5], [-1, 0, 0], [0, 0, -0.5], [1, 0, 0]], // side to side shell
+  [[0, -2, 0], [1, 0, 0], [0, 1, 0], [-1, 0,  0], [0, -2, 0]], // flat shell
+  //left wing
+  [[0.8, -2, 0], [0.8, 0, 0.5], [0.8, 1, 0], [0.8, 0, -0.5], [0.8, -2, 0]], // outline
+  [[0.8, 1, 0], [1.8, 0, 0], [0.8, -2, 0]], // front to back
+  [[0.8, 0, 0.5], [1.8, 0, 0], [0.8, 0, 0.5]], // top to bottom
+  //right wing
+  [[-0.8, -2, 0], [-0.8, 0, 0.5], [-0.8, 1, 0], [-0.8, 0, -0.5], [-0.8, -2, 0]], // outline
+  [[-0.8, 1, 0], [-1.8, 0, 0], [-0.8, -2, 0]], // front to back
+  [[-0.8, 0, 0.5], [-1.8, 0, 0], [-0.8, 0, 0.5]], // top to bottom
+], 2);
+
 export const base_1_graphic = new MultiPartGraphic([
   {graphic: parts.base_room, z:  40},
   {graphic: parts.base_room, z:  30},

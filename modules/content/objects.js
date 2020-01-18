@@ -21,3 +21,23 @@ export const BASIC_LASER = {
     detectionDistance: 200,
   },
 }
+
+export const SKIRMISHER_LASER = {
+  graphic: graphics.basic_laser_graphic,
+  scale: 4,
+  color: '#FFFFFF',
+  behaviour: {
+    aiFunction: ais.PROJECTILE_AI_2,
+    detectionDistance: 200,
+  },
+}
+
+export const HEAVY_LASER = {
+  graphic: graphics.heavy_laser_graphic,
+  scale: 1,
+  color: '#FFFFFF',
+  behaviour: {
+    aiFunction: ais.PROJECTILE_AI_3,
+    detectionDistance: 200,
+  },
+}

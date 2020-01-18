@@ -23,3 +23,17 @@ export const FIGHTER_2_SPAWNER = new Spawner({
   spawnTemplate: ships.FIGHTER_2,
   onlyEdges: false,
 });
+
+export const SKIRMISHER_1_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 800,
+  spawnTemplate: ships.SKIRMISHER_1,
+  onlyEdges: false,
+});
+
+export const HEAVY_1_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 3000,
+  spawnTemplate: ships.HEAVY_1,
+  onlyEdges: false,
+});

@@ -76,3 +76,55 @@ export const FIGHTER_2_WEAPON = function(aShip, game) {
     aShip.weaponCooldown -= 1;
   }
 }
+
+export const SKIRMISHER_1_WEAPON = function(aShip, game) {
+  if (aShip.weaponCooldown ==  0) {
+    aShip.weaponCooldown = 5;
+
+    // spawn a laser
+    let laser = spawnProjectile(objects.SKIRMISHER_LASER, aShip);
+
+    if (aShip.weaponState == 0) {
+      aShip.weaponState = 1;
+      laser.x += Math.cos(laser.r) * 1.5;
+      laser.y += Math.sin(laser.r) * 1.5;
+    } else {
+      aShip.weaponState = 0;
+      laser.x -= Math.cos(laser.r) * 1.5;
+      laser.y -= Math.sin(laser.r) * 1.5;
+
+    }
+    game.gameLoop.registerObject(laser);
+
+    //  recoil
+    aShip.push(aShip.r + aShip.offset, -0.02)
+
+  } else if (aShip.weaponCooldown > 0) {
+    aShip.weaponCooldown -= 1;
+  }
+}
+
+export const HEAVY_1_WEAPON = function(aShip, game) {
+  if (aShip.weaponCooldown ==  0) {
+    aShip.weaponCooldown = 30;
+
+    // spawn a laser
+    let laser = spawnProjectile(objects.HEAVY_LASER, aShip);
+
+    if (aShip.weaponState == 0) {
+      aShip.weaponState = 1;
+      laser.x += Math.cos(laser.r) * 0;
+      laser.y += Math.sin(laser.r) * 0;
+    } else {
+      aShip.weaponState = 0;
+
+    }
+    game.gameLoop.registerObject(laser);
+
+    //  recoil
+    aShip.push(aShip.r + aShip.offset, -0.3)
+
+  } else if (aShip.weaponCooldown > 0) {
+    aShip.weaponCooldown -= 1;
+  }
+}
