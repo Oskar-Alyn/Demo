@@ -11,5 +11,5 @@ export const PURPLE = {
 }
 
 export const GREEN = {
-  color: '20FF20'
+  color: '#20FF20',
 }
