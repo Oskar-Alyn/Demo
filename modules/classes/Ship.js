@@ -34,7 +34,7 @@ export class Ship extends GameObject {
     this.useWeapon = false;
 
     // model detail
-    this.offset = 3.14159 * -0.5;
+    this.offset = Math.PI * -0.5;
   }
 
   // returns a functional rotation value

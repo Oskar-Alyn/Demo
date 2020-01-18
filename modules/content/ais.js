@@ -13,8 +13,8 @@ export const FIGHTER_AI = function(aShip, ai, game) {
 
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null && ai.aiTarget.shield > 0) {
     // find angle to target
-    let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y) + 3.14159 * 0.5;
-    let angleOff = (targetAngle - aShip.r) % (3.1415 * 2);
+    let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y) + Math.PI * 0.5;
+    let angleOff = (targetAngle - aShip.r) % (Math.PI * 2);
 
     aShip.movingForward = true;
     aShip.useWeapon = (Math.abs(angleOff) * ai.targetDistance < 50);
@@ -66,5 +66,5 @@ export const PROJECTILE_AI = function(aShip, ai, game) {
     }
   }
 
-  aShip.push(aShip.r + 3.14159 * -0.5, 0.15);
+  aShip.push(aShip.r + Math.PI * -0.5, 0.15);
 };

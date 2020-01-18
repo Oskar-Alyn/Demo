@@ -37,7 +37,7 @@ export class Spawner {
         }
 
         // move to align with grid
-        let location = rotateCoord([spawn.x, spawn.y, 0], (3.1415 / 4));
+        let location = rotateCoord([spawn.x, spawn.y, 0], (Math.PI / 4));
         spawn.x = location[0];
         spawn.y = location[1];
 
@@ -50,7 +50,7 @@ export class Spawner {
         spawn.r = RN(0, 3141) / 100;
 
         // move to align with grid
-        let location = rotateCoord([spawn.x, spawn.y, 0], (3.1415 / 4));
+        let location = rotateCoord([spawn.x, spawn.y, 0], (Math.PI / 4));
         spawn.x = location[0];
         spawn.y = location[1];
       }

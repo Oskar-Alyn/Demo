@@ -69,9 +69,9 @@ export class Graphic {
 
         // find effective distance for perspective
         let cameraDistance  = 100;
-        let relevantCameraX = display.cameraX - cameraDistance * Math.cos(3.14159 * -0.5 + display.cameraR);
-        let relevantCameraY = display.cameraY - cameraDistance * Math.sin(3.14159 * -0.5 + display.cameraR);
-        let relevantCameraZ = cameraDistance * Math.sin(3.14159 * 0.5 + display.cameraTilt);
+        let relevantCameraX = display.cameraX - cameraDistance * Math.cos(Math.PI * -0.5 + display.cameraR);
+        let relevantCameraY = display.cameraY - cameraDistance * Math.sin(Math.PI * -0.5 + display.cameraR);
+        let relevantCameraZ = cameraDistance * Math.sin(Math.PI * 0.5 + display.cameraTilt);
 
         let physCoordinate = rotateCoord(this.parts[i][ii], aGameObject.r);
 
@@ -79,8 +79,8 @@ export class Graphic {
         let yDistance = aGameObject.y + physCoordinate[1] - relevantCameraY;
         let zDistance = aGameObject.z + physCoordinate[2] - relevantCameraZ;
 
-        let angleFromCameraHorizontal = (3.14159 * -0.5 + angleTo(xDistance, yDistance, 0 , 0)) - display.cameraR;
-        let angleFromCameraVertical = 3.14159 * 0.5 * (1 - display.cameraTilt);
+        let angleFromCameraHorizontal = (Math.PI * -0.5 + angleTo(xDistance, yDistance, 0 , 0)) - display.cameraR;
+        let angleFromCameraVertical = Math.PI * 0.5 * (1 - display.cameraTilt);
 
         let horizontalDistance = pythagorean(xDistance, yDistance, 0, 0);
         let effectiveDistance = (Math.cos(angleFromCameraVertical) * Math.cos(angleFromCameraHorizontal) * horizontalDistance);

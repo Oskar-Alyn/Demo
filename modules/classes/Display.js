@@ -53,8 +53,8 @@ export class Display {
 
     this.updateCamera(game);
 
-    this.zFactor = Math.sin(3.14159 / 2 * this.cameraTilt);
-    this.yFactor = Math.cos(3.14159 / 2 * this.cameraTilt);
+    this.zFactor = Math.sin(Math.PI / 2 * this.cameraTilt);
+    this.yFactor = Math.cos(Math.PI / 2 * this.cameraTilt);
     this.y0 = (this.canvas.height / 2) * (1 + (this.cameraTilt * 0.8));
 
     // reset canvas
