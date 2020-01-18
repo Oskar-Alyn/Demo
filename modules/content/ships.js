@@ -42,8 +42,8 @@ export const FIGHTER_2 = {
       aiFunction: ais.FIGHTER_AI,
       detectionDistance: 200,
     },
-    shieldMax: 7,
-    shieldRegen: 30,
+    shieldMax: 13,
+    shieldRegen: 10,
     weapon: weapons.FIGHTER_2_WEAPON,
     drop: objects.CREDIT,
 };
