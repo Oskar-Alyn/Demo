@@ -6,6 +6,7 @@ export class GameObject {
     // physics properties
     this.x = 0;
     this.y = 0;
+    this.z = 0;
     this.r = 0;
     this.Vx = 0;
     this.Vy = 0;

@@ -17,11 +17,16 @@ export class Level {
     let gridGraphic = [];
     let lineLength = squareSize * (gridSize - 1);
 
-    for (let i = 0; i < gridSize; i++) {
-      gridGraphic[i * 4]     = [[squareSize * i, lineLength, 0], [squareSize * i, lineLength * -1, 0]];
-      gridGraphic[i * 4 + 1] = [[lineLength, squareSize * i, 0], [lineLength * -1, squareSize * i, 0]];
-      gridGraphic[i * 4 + 2] = [[squareSize * i * -1, lineLength, 0], [squareSize * i * -1, lineLength * -1, 0]];
-      gridGraphic[i * 4 + 3] = [[lineLength, squareSize * i * -1, 0], [lineLength * -1, squareSize * i * -1, 0]];
+    for (let i = -1 * gridSize; i < gridSize; i++) {
+      for (let ii = -1 * gridSize; ii < gridSize; ii++) {
+        gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * ii, 0], [squareSize * i, squareSize * (ii + 1), 0]];
+        gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * ii, 0], [squareSize * (i + 1), squareSize * ii, 0]];
+
+        if (i == gridSize - 1 || ii == gridSize - 1) {
+          gridGraphic[gridGraphic.length] = [[squareSize * (i + 1), squareSize * ii, 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
+          gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * (ii + 1), 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
+        }
+      }
     }
 
     return new Graphic(gridGraphic, 1);
@@ -86,6 +91,7 @@ export class Level {
       // set location according to info
       if (typeof(info.x) !== 'undefined') { spawn.x = info.x };
       if (typeof(info.y) !== 'undefined') { spawn.y = info.y };
+      if (typeof(info.z) !== 'undefined') { spawn.z = info.z };
       if (typeof(info.r) !== 'undefined') { spawn.r = info.r };
 
       // add the spawn to the game

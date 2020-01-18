@@ -46,9 +46,10 @@ export class Graphic {
 
     // setup adjusted variables for relative camera
     let scaledGraphic = this.scaleGraphic(this.parts, (aGameObject.scale * display.worldScale));
-    let adjustedPosition = rotateCoord([aGameObject.x - display.cameraX, aGameObject.y - display.cameraY], -1 * display.cameraR);
+    let adjustedPosition = rotateCoord([aGameObject.x - display.cameraX, aGameObject.y - display.cameraY, aGameObject.z], -1 * display.cameraR);
     let adjustedX = adjustedPosition[0] * display.worldScale;
     let adjustedY = adjustedPosition[1] * display.worldScale;
+    let adjustedZ = adjustedPosition[2] * display.worldScale;
     let adjustedR = aGameObject.r - display.cameraR;
 
     // showing shields
@@ -65,14 +66,48 @@ export class Graphic {
 
       // actual drawing
       for (let ii = 0; ii < currentPart.length; ii++) {
+
+        // find effective distance for perspective
+        let cameraDistance  = 100;
+        let relevantCameraX = display.cameraX - cameraDistance * Math.cos(3.14159 * -0.5 + display.cameraR);
+        let relevantCameraY = display.cameraY - cameraDistance * Math.sin(3.14159 * -0.5 + display.cameraR);
+        let relevantCameraZ = cameraDistance * Math.sin(3.14159 * 0.5 + display.cameraTilt);
+
+        let physCoordinate = rotateCoord(this.parts[i][ii], aGameObject.r);
+
+        let xDistance = aGameObject.x + physCoordinate[0] - relevantCameraX;
+        let yDistance = aGameObject.y + physCoordinate[1] - relevantCameraY;
+        let zDistance = aGameObject.z + physCoordinate[2] - relevantCameraZ;
+
+        let angleFromCameraHorizontal = (3.14159 * -0.5 + angleTo(xDistance, yDistance, 0 , 0)) - display.cameraR;
+        let angleFromCameraVertical = 3.14159 * 0.5 * (1 - display.cameraTilt);
+
+        let horizontalDistance = pythagorean(xDistance, yDistance, 0, 0);
+        let effectiveDistance = (Math.cos(angleFromCameraVertical) * Math.cos(angleFromCameraHorizontal) * horizontalDistance);
+        effectiveDistance -= zDistance * Math.sin(angleFromCameraVertical)
+
         currentCoordinate = rotateCoord(currentPart[ii], adjustedR);
         let xCoord = adjustedX + currentCoordinate[0];
+
+        xCoord *= (
+          effectiveDistance > 0
+          ? 1 / (1 + effectiveDistance * 0.008)
+          : 1 + effectiveDistance * -0.008 // @Todo make accurate
+        );
+
         xCoord += display.x0;
         let yCoord = display.yFactor * (adjustedY + currentCoordinate[1]);
-        yCoord -= (currentCoordinate[2] * display.zFactor);
+        yCoord -= (adjustedZ + currentCoordinate[2]) * display.zFactor;
+
+        yCoord *= (
+          effectiveDistance > 0
+          ? 1 / (1 + effectiveDistance * 0.008)
+          : 1 + effectiveDistance * -0.008 // @Todo make accurate
+        );
+
         yCoord += display.y0;
 
-        if (ii == 0) {
+        if (ii == 0 || effectiveDistance < 0) {
           context.moveTo(xCoord, yCoord);
         } else {
           context.lineTo(xCoord, yCoord);

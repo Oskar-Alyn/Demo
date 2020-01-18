@@ -9,7 +9,7 @@ export const HORIZONTAL_CAMERA_LAG = 15;
 export const VERTICAL_CAMERA_LAG = 40;
 
 export const DEFAULT_CAMERA_ANGLE = 1;
-export const DEFAULT_WORLD_SCALE = 8;
+export const DEFAULT_CAMERA_ZOOM = 22;
 
 export const GRID_SQUARE_SIZE = 40;
 

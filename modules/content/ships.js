@@ -21,7 +21,7 @@ export const BASE_1 = {
 export const FIGHTER_1 = {
     graphic: graphics.fighter_1_graphic,
     scale: 1.5,
-    speed: 0.02,
+    speed: 0.018,
     rotationSpeed: 0.0015,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
