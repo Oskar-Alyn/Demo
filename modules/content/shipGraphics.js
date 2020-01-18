@@ -37,3 +37,12 @@ export const turret_1_graphic = new Graphic([
   [[5, 35], [5, -5], [-5, -5], [-5, 35], [5, 35]], // turret rectangle
   [[5, 15], [15, 5], [15, -15], [-15, -15], [-15, 5], [-5, 15]], // outer layer
 ]);
+
+export const box_graphic_test = new Graphic([  // the center is at the back of the segment one up from the bottom of the graphic
+  [[-1, 2, -1], [1, 2, -1], [1, -2, -1], [-1, -2, -1], [-1, 2, -1]], // bottom outline
+  [[-1, 2, 1], [1, 2, 1], [1, -2, 1], [-1, -2, 1], [-1, 2, 1]], // top outline
+  [[-1, 2, -1], [-1, 2, 1]]
+  [[1, 2, -1], [1, 2, 1]]
+  [[1, -2, -1], [1, -2, 1]]
+  [[-1, -2, -1], [-1, -2, -1]]
+], 2);
