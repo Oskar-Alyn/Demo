@@ -13,3 +13,7 @@ export const PURPLE = {
 export const GREEN = {
   color: '#20FF20',
 }
+
+export const WHITE = {
+  color: '#FFFFFF',
+}
