@@ -47,3 +47,18 @@ export const FIGHTER_2 = {
     weapon: weapons.FIGHTER_2_WEAPON,
     drop: objects.CREDIT,
 };
+
+export const MULTIPART = {
+    graphic: graphics.test_multi_ship,
+    scale: 4,
+    speed: 0.006,
+    rotationSpeed: 0.0005,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 500,
+    },
+    shieldMax: 15,
+    shieldRegen: 30,
+    weapon: weapons.FIGHTER_1_WEAPON,
+    drop: objects.CREDIT,
+};
