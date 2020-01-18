@@ -16,7 +16,7 @@ export function rotateCoord(coord, rotation) {
   // convert to polar coordinates
   let r = Math.sqrt((x * x) + (y * y));
   let t = Math.atan(y / x);
-  if (x < 0) { t += 3.14159 }
+  if (x < 0) { t += Math.PI }
 
   // add rotation
   t += rotation;
@@ -33,14 +33,14 @@ export function angleTo(x1, y1, x2, y2) {
   // check for bad angle
   if (x2 - x1 == 0) {
     if (y2 - y1 < 0) {
-      return -3.14159 / 2; // FIX NUMS
+      return -Math.PI / 2; // FIX NUMS
     } else {
-      return 3.14159 / 2;
+      return Math.PI / 2;
     }
   }
 
   let r = Math.atan((y2 - y1) / (x2 - x1));
-  if (x2 - x1 < 0) { r += 3.14159 }
+  if (x2 - x1 < 0) { r += Math.PI }
 
   return r;
 }

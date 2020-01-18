@@ -39,7 +39,7 @@ export class Level {
       color: HUD_COLOR,
       scale: 1,
     });
-    grid.r = 3.14115 / 4;
+    grid.r = Math.PI / 4;
     gameLoop.registerObject(grid);
   }
 
