@@ -37,3 +37,10 @@ export const HEAVY_1_SPAWNER = new Spawner({
   spawnTemplate: ships.HEAVY_1,
   onlyEdges: false,
 });
+
+export const MULTIPART_1_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 1000,
+  spawnTemplate: ships.MULTIPART,
+  onlyEdges: false,
+});

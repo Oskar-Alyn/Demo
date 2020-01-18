@@ -87,8 +87,8 @@ export const MULTIPART = {
       aiFunction: ais.FIGHTER_AI,
       detectionDistance: 500,
     },
-    shieldMax: 15,
-    shieldRegen: 30,
+    shieldMax: 30,
+    shieldRegen: 10,
     weapon: weapons.FIGHTER_1_WEAPON,
     drop: objects.CREDIT,
 };
