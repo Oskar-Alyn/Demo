@@ -85,7 +85,7 @@ export const PROJECTILE_AI_3 = function(aShip, ai, game) {
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
     let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
     if (ai.targetDistance < hitCircle) {
-      ai.aiTarget.shield -= 6;
+      ai.aiTarget.shield -= 7;
       game.gameLoop.unregisterObject(aShip);
     }
   }
