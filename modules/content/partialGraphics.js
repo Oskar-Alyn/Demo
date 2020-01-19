@@ -32,3 +32,27 @@ export const base_room = new Graphic([
   [[-5, 2, -5], [-10, 4, 0], [-5, 2, 5]], //connecting line
   [[-2, 5, -5], [-4, 10, 0], [-2, 5, 5]], //connecting line
 ], 2);
+
+export const base_hall = new Graphic([
+  [[2, 5, -5], [2, 5, 5]], //connecting line
+  [[5, 2, -5], [5, 2, 5]], //connecting line
+  [[5, -2, -5], [5, -2, 5]], //connecting line
+  [[2, -5, -5], [2, -5, 5]], //connecting line
+  [[-2, -5, -5], [-2, -5, 5]], //connecting line
+  [[-5, -2, -5], [-5, -2, 5]], //connecting line
+  [[-5, 2, -5], [-5, 2, 5]], //connecting line
+  [[-2, 5, -5], [-2, 5, 5]], //connecting line
+], 2);
+
+export const base_ring = new Graphic([
+  [[4, 10, 0], [10, 4, 0], [10, -4, 0], [4, -10, 0], [-4, -10, 0], [-10, -4, 0], [-10, 4, 0], [-4, 10, 0], [4, 10, 0]], // outermost octogon
+
+  [[2, 5, -5], [2, 5, 5]], //connecting line
+  [[5, 2, -5], [5, 2, 5]], //connecting line
+  [[5, -2, -5], [5, -2, 5]], //connecting line
+  [[2, -5, -5], [2, -5, 5]], //connecting line
+  [[-2, -5, -5], [-2, -5, 5]], //connecting line
+  [[-5, -2, -5], [-5, -2, 5]], //connecting line
+  [[-5, 2, -5], [-5, 2, 5]], //connecting line
+  [[-2, 5, -5], [-2, 5, 5]], //connecting line
+], 2);

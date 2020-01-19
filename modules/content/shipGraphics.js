@@ -70,34 +70,29 @@ export const beast_3_graphic = new Graphic([
 
 export const base_1_graphic = new MultiPartGraphic([
   {graphic: parts.base_room, z:  100},
-  {graphic: parts.base_room, z:   90},
+  {graphic: parts.base_ring, z:   90},
   {graphic: parts.base_room, z:   80},
-  {graphic: parts.base_room, z:   70},
+  {graphic: parts.base_hall, z:   70},
   {graphic: parts.base_room, z:   60},
-  {graphic: parts.base_room, z:   50},
+  {graphic: parts.base_hall, z:   50},
   {graphic: parts.base_room, z:   40},
   {graphic: parts.base_room, z:   30},
-  {graphic: parts.base_room, z:   20},
-  {graphic: parts.base_room, z:   10},
+  {graphic: parts.base_hall, z:   20},
+  {graphic: parts.base_ring, z:   10},
   {graphic: parts.base_room, z:    0},
-  {graphic: parts.base_room, z:  -10},
+  {graphic: parts.base_hall, z:  -10},
   {graphic: parts.base_room, z:  -20},
-  {graphic: parts.base_room, z:  -30},
+  {graphic: parts.base_ring, z:  -30},
   {graphic: parts.base_room, z:  -40},
   {graphic: parts.base_room, z:  -50},
-  {graphic: parts.base_room, z:  -60},
+  {graphic: parts.base_hall, z:  -60},
   {graphic: parts.base_room, z:  -70},
-  {graphic: parts.base_room, z:  -80},
-  {graphic: parts.base_room, z:  -90},
+  {graphic: parts.base_hall, z:  -80},
+  {graphic: parts.base_ring, z:  -90},
   {graphic: parts.base_room, z: -100},
 ]);
 
 // TODO: 3d-ify all the graphics below, and rescale
-
-export const test_multi_ship = new MultiPartGraphic([
-  {graphic: parts.box_graphic_test},
-  {graphic: parts.front_graphic_test, y: -3, r: Math.PI * 1},
-]);
 
 export const turret_1_graphic = new Graphic([
   [[5, 5], [15, 5]], // detail front

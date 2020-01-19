@@ -78,21 +78,6 @@ export const HEAVY_1 = {
     drop: objects.CREDIT,
 };
 
-export const MULTIPART = {
-    graphic: graphics.test_multi_ship,
-    scale: 2,
-    speed: 0.006,
-    rotationSpeed: 0.0005,
-    aiType: {
-      aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 500,
-    },
-    shieldMax: 30,
-    shieldRegen: 10,
-    weapon: weapons.FIGHTER_1_WEAPON,
-    drop: objects.CREDIT,
-};
-
 export const FIREBEAST_1 = {
     graphic: graphics.beast_1_graphic,
     scale: 0.4,
