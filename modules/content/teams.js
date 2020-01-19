@@ -14,6 +14,10 @@ export const GREEN = {
   color: '#20FF20',
 }
 
+export const YELLOW = {
+  color: '#FFFF00',
+}
+
 export const WHITE = {
   color: '#FFFFFF',
 }

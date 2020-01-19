@@ -23,7 +23,7 @@ export const acid_graphic = new Graphic([
 ], 2);
 
 export const lightning_graphic = new Graphic([
-  [[0, 0.5, 0], [0.1, 0, 0], [0, -0.5, 0]],
+  [[0, 0.5, 0], [0.1, 0, 0], [-0.1, 0, 0], [0, -0.5, 0]],
 ], 4);
 
 export const talon_graphic = new Graphic([
