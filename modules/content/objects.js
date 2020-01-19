@@ -41,3 +41,23 @@ export const HEAVY_LASER = {
     detectionDistance: 200,
   },
 }
+
+export const FIRE_BLAST = {
+  graphic: graphics.fire_graphic,
+  scale: 1,
+  color: '#FFFFFF',
+  behaviour: {
+    aiFunction: ais.PROJECTILE_AI,
+    detectionDistance: 200,
+  },
+}
+
+export const ACID_BLAST = {
+  graphic: graphics.acid_graphic,
+  scale: 0.1,
+  color: '#FFFFFF',
+  behaviour: {
+    aiFunction: ais.PROJECTILE_AI_2,
+    detectionDistance: 200,
+  },
+}

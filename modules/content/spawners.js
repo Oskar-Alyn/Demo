@@ -44,3 +44,17 @@ export const MULTIPART_1_SPAWNER = new Spawner({
   spawnTemplate: ships.MULTIPART,
   onlyEdges: false,
 });
+
+export const FIREBEAST_1_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 800,
+  spawnTemplate: ships.FIREBEAST_1,
+  onlyEdges: true,
+});
+
+export const ACIDBEAST_1_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 2000,
+  spawnTemplate: ships.ACIDBEAST_1,
+  onlyEdges: false,
+});

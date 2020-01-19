@@ -29,16 +29,51 @@ export const winged_1_graphic = new Graphic([
   [[-0.8, 0, 0.5], [-1.8, 0, 0], [-0.8, 0, 0.5]], // top to bottom
 ], 2);
 
+export const beast_1_graphic = new Graphic([
+  [[0, -1, 0], [4, -2, 0], [4, 4, 0], [0, 6, 0], [-4, 4, 0], [-4, -2, 0], [0, -1, 0]], // mid line
+  [[0, -1, 0], [0, -2, 2], [0, 4, 2], [0, 6, 0], [0, 4, -2], [0, -2, -2], [0, -1, 0]],  //front to back
+  [[0, -2, 2], [4, -2, 0], [0, -2, -2], [-4, -2, 0], [0, -2, 2]], //front ring
+  [[0, 4, 2], [4, 4, 0], [0, 4, -2], [-4, 4, 0], [0, 4, 2]], //back ring
+], 2);
+
+export const beast_2_graphic = new Graphic([
+  [[-5, 7, 0], [-5, 0, 0], [-4, -1, 0], [-4, -2, 0], [0, -1, 0], [4, -2, 0], [4, -1, 0], [5, 0, 0], [5, 7, 0]], // mid line
+  [[0, -2, 2], [4, -2, 0], [0, -2, -2], [-4, -2, 0], [0, -2, 2]], //front ring
+  [[0, -1, 0], [0, -2, 2], [0, 2, 2], [0, 4, 0], [0, 2, -2], [0, -2, -2], [0, -1, 0]],  //front to back
+  [[4, -1, 0], [2, 0, 1], [2, 2, 1], [3, 3, 0.5], [5, 7, 0]],  // upper right wing
+  [[4, -1, 0], [2, 0, -1], [2, 2, -1], [3, 3, -0.5], [5, 7, 0]], // lower right wing
+  [[-4, -1, 0], [-2, 0, 1], [-2, 2, 1], [-3, 3, 0.5], [-5, 7, 0]],  // upper left wing
+  [[-4, -1, 0], [-2, 0, -1], [-2, 2, -1], [-3, 3, -0.5], [-5, 7, 0]], // lower left wing
+  [[2, 0, 1], [5, 0, 0], [2, 0, -1]], // right wing detail front
+  [[-2, 0, 1], [-5, 0, 0], [-2, 0, -1]], // left wing detail front
+  [[2, 3, 0], [3, 3, 0.5], [3, 3, -0.5], [2, 3, 0]], // right wing detail back
+  [[-2, 3, 0], [-3, 3, 0.5], [-3, 3, -0.5], [-2, 3, 0]], // left wing detail back
+  [[2, 3, 0], [0, 4, 0], [-2, 3, 0]], // back detail
+  [[0, 2, 2], [2, 2, 1], [2, 3, 0], [2, 2, -1], [0, 2, -2], [-2, 2, -1], [-2, 3, 0], [-2, 2, 1], [0, 2, 2]], //back ring
+], 2);
+
 export const base_1_graphic = new MultiPartGraphic([
-  {graphic: parts.base_room, z:  40},
-  {graphic: parts.base_room, z:  30},
-  {graphic: parts.base_room, z:  20},
-  {graphic: parts.base_room, z:  10},
-  {graphic: parts.base_room, z:   0},
-  {graphic: parts.base_room, z: -10},
-  {graphic: parts.base_room, z: -20},
-  {graphic: parts.base_room, z: -30},
-  {graphic: parts.base_room, z: -40},
+  {graphic: parts.base_room, z:  100},
+  {graphic: parts.base_room, z:   90},
+  {graphic: parts.base_room, z:   80},
+  {graphic: parts.base_room, z:   70},
+  {graphic: parts.base_room, z:   60},
+  {graphic: parts.base_room, z:   50},
+  {graphic: parts.base_room, z:   40},
+  {graphic: parts.base_room, z:   30},
+  {graphic: parts.base_room, z:   20},
+  {graphic: parts.base_room, z:   10},
+  {graphic: parts.base_room, z:    0},
+  {graphic: parts.base_room, z:  -10},
+  {graphic: parts.base_room, z:  -20},
+  {graphic: parts.base_room, z:  -30},
+  {graphic: parts.base_room, z:  -40},
+  {graphic: parts.base_room, z:  -50},
+  {graphic: parts.base_room, z:  -60},
+  {graphic: parts.base_room, z:  -70},
+  {graphic: parts.base_room, z:  -80},
+  {graphic: parts.base_room, z:  -90},
+  {graphic: parts.base_room, z: -100},
 ]);
 
 // TODO: 3d-ify all the graphics below, and rescale

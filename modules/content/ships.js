@@ -12,8 +12,8 @@ export const BASE_1 = {
       aiFunction: ais.BASE_AI,
       detectionDistance: 1,
     },
-    shieldMax: 50,
-    shieldRegen: 20,
+    shieldMax: 100,
+    shieldRegen: 10,
     weapon: null,
     drop: objects.CREDIT,
 };
@@ -51,8 +51,8 @@ export const FIGHTER_2 = {
 export const SKIRMISHER_1 = {
     graphic: graphics.winged_1_graphic,
     scale: 2,
-    speed: 0.024,
-    rotationSpeed: 0.0015,
+    speed: 0.026,
+    rotationSpeed: 0.0016,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
       detectionDistance: 200,
@@ -67,7 +67,7 @@ export const HEAVY_1 = {
     graphic: graphics.winged_1_graphic,
     scale: 3,
     speed: 0.024,
-    rotationSpeed: 0.0015,
+    rotationSpeed: 0.0012,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
       detectionDistance: 200,
@@ -90,5 +90,35 @@ export const MULTIPART = {
     shieldMax: 30,
     shieldRegen: 10,
     weapon: weapons.FIGHTER_1_WEAPON,
+    drop: objects.CREDIT,
+};
+
+export const FIREBEAST_1 = {
+    graphic: graphics.beast_1_graphic,
+    scale: 0.4,
+    speed: 0.02,
+    rotationSpeed: 0.002,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 200,
+    },
+    shieldMax: 7,
+    shieldRegen: 26,
+    weapon: weapons.FIRE_1_WEAPON,
+    drop: objects.CREDIT,
+};
+
+export const ACIDBEAST_1 = {
+    graphic: graphics.beast_2_graphic,
+    scale: 1.6,
+    speed: 0.03,
+    rotationSpeed: 0.001,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 200,
+    },
+    shieldMax: 27,
+    shieldRegen: 12,
+    weapon: weapons.ACID_1_WEAPON,
     drop: objects.CREDIT,
 };
