@@ -50,7 +50,7 @@ export const FIGHTER_2 = {
 
 export const MULTIPART = {
     graphic: graphics.test_multi_ship,
-    scale: 4,
+    scale: 2,
     speed: 0.006,
     rotationSpeed: 0.0005,
     aiType: {

@@ -39,6 +39,7 @@ export class MultiPartGraphic {
 
         color: obj.color,
         scale: obj.scale,
+        shield: (typeof obj.shield == 'undefined' ? 1 : obj.shield),
 
       }, display);
     }

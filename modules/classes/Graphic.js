@@ -68,16 +68,16 @@ export class Graphic {
       for (let ii = 0; ii < currentPart.length; ii++) {
 
         // find effective distance for perspective
-        let cameraDistance  = 100;
+        let cameraDistance  = display.cameraDistance;
         let relevantCameraX = display.cameraX - cameraDistance * Math.cos(Math.PI * -0.5 + display.cameraR);
         let relevantCameraY = display.cameraY - cameraDistance * Math.sin(Math.PI * -0.5 + display.cameraR);
-        let relevantCameraZ = cameraDistance * Math.sin(Math.PI * 0.5 + display.cameraTilt);
+        let relevantCameraZ =                   cameraDistance * Math.sin(Math.PI * 0.5 + display.cameraTilt);
 
         let physCoordinate = rotateCoord(this.parts[i][ii], aGameObject.r);
 
-        let xDistance = aGameObject.x + physCoordinate[0] - relevantCameraX;
-        let yDistance = aGameObject.y + physCoordinate[1] - relevantCameraY;
-        let zDistance = aGameObject.z + physCoordinate[2] - relevantCameraZ;
+        let xDistance = aGameObject.x + (physCoordinate[0] * aGameObject.scale) - relevantCameraX;
+        let yDistance = aGameObject.y + (physCoordinate[1] * aGameObject.scale) - relevantCameraY;
+        let zDistance = aGameObject.z + (physCoordinate[2] * aGameObject.scale) - relevantCameraZ;
 
         let angleFromCameraHorizontal = (Math.PI * -0.5 + angleTo(xDistance, yDistance, 0 , 0)) - display.cameraR;
         let angleFromCameraVertical = Math.PI * 0.5 * (1 - display.cameraTilt);
@@ -102,7 +102,7 @@ export class Graphic {
         yCoord *= (
           effectiveDistance > 0
           ? 1 / (1 + effectiveDistance * 0.008)
-          : 1 + effectiveDistance * -0.008 // @Todo make accurate
+          : 1 + effectiveDistance * -0.008 // @Todo make accurate?
         );
 
         yCoord += display.y0;

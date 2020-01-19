@@ -13,6 +13,7 @@ export class Display {
     this.cameraY = 0;
     this.cameraR = 0;
     this.cameraTilt = consts.DEFAULT_CAMERA_ANGLE;
+    this.cameraDistance = 100;
 
     this.x0 = this.canvas.width / 2;
     this.y0;
@@ -55,6 +56,7 @@ export class Display {
 
     this.zFactor = Math.sin(Math.PI / 2 * this.cameraTilt);
     this.yFactor = Math.cos(Math.PI / 2 * this.cameraTilt);
+
     this.y0 = (this.canvas.height / 2) * (1 + (this.cameraTilt * 0.8));
 
     // reset canvas
