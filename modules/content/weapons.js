@@ -189,3 +189,57 @@ export const ACID_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown -= 1;
   }
 }
+
+export const LIGHTNING_1_WEAPON = function(aShip, game) {
+  if (aShip.weaponCooldown ==  0) {
+    aShip.weaponCooldown = 5;
+
+    // spawn a laser
+    let laser = spawnProjectile(objects.LIGHTNING_BLAST, aShip);
+
+    if (aShip.weaponState == 0) {
+      aShip.weaponState = 1;
+      laser.x += Math.cos(laser.r) * 0;
+      laser.y += Math.sin(laser.r) * 0;
+    } else {
+      aShip.weaponState = 0;
+      laser.x -= Math.cos(laser.r) * 0;
+      laser.y -= Math.sin(laser.r) * 0;
+
+    }
+    game.gameLoop.registerObject(laser);
+
+    //  recoil
+    aShip.push(aShip.r + aShip.offset, -0.01)
+
+  } else if (aShip.weaponCooldown > 0) {
+    aShip.weaponCooldown -= 1;
+  }
+}
+
+export const TALON_1_WEAPON = function(aShip, game) {
+  if (aShip.weaponCooldown ==  0) {
+    aShip.weaponCooldown = 10;
+
+    // spawn a laser
+    let laser = spawnProjectile(objects.TALON_BLAST, aShip);
+
+    if (aShip.weaponState == 0) {
+      aShip.weaponState = 1;
+      laser.x += Math.cos(laser.r) * 1.8;
+      laser.y += Math.sin(laser.r) * 1.8;
+    } else {
+      aShip.weaponState = 0;
+      laser.x -= Math.cos(laser.r) * 1.8;
+      laser.y -= Math.sin(laser.r) * 1.8;
+
+    }
+    game.gameLoop.registerObject(laser);
+
+    //  recoil
+    aShip.push(aShip.r + aShip.offset, -0.01)
+
+  } else if (aShip.weaponCooldown > 0) {
+    aShip.weaponCooldown -= 1;
+  }
+}

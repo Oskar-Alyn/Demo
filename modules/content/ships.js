@@ -122,3 +122,33 @@ export const ACIDBEAST_1 = {
     weapon: weapons.ACID_1_WEAPON,
     drop: objects.CREDIT,
 };
+
+export const LIGHTNINGBEAST_1 = {
+    graphic: graphics.beast_2_graphic,
+    scale: 0.5,
+    speed: 0.02,
+    rotationSpeed: 0.0015,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 200,
+    },
+    shieldMax: 13,
+    shieldRegen: 20,
+    weapon: weapons.LIGHTNING_1_WEAPON,
+    drop: objects.CREDIT,
+};
+
+export const TALONBEAST_1 = {
+    graphic: graphics.beast_3_graphic,
+    scale: 1,
+    speed: 0.026,
+    rotationSpeed: 0.0014,
+    aiType: {
+      aiFunction: ais.FIGHTER_AI,
+      detectionDistance: 200,
+    },
+    shieldMax: 15,
+    shieldRegen: 16,
+    weapon: weapons.TALON_1_WEAPON,
+    drop: objects.CREDIT,
+};

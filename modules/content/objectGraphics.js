@@ -22,6 +22,15 @@ export const acid_graphic = new Graphic([
   [[2, 5, -5], [5, 2, -5], [5, -2, -5], [2, -5, -5], [-2, -5, -5], [-5, -2, -5], [-5, 2, -5], [-2, 5, -5], [2, 5, -5]], // bottom octogon
 ], 2);
 
+export const lightning_graphic = new Graphic([
+  [[0, 0.5, 0], [0.1, 0, 0], [0, -0.5, 0]],
+], 4);
+
+export const talon_graphic = new Graphic([
+  [[-0.6, 2, 0], [0, -2, 0], [0.6, 2, 0]],
+  [[0, 2, -0.6], [0, -2, 0], [0, 2, 0.6]],
+], 4);
+
 export const credit_graphic = new Graphic([
   [[-0.5, 0, -0.25], [-0.5, 0, 0.25], [0.5, 0, 0.25], [0.5, 0, -0.25], [-0.5, 0, -0.25]], // Square
 ], 2);

@@ -37,7 +37,7 @@ export const HEAVY_LASER = {
   scale: 1,
   color: '#FFFFFF',
   behaviour: {
-    aiFunction: ais.PROJECTILE_AI_3,
+    aiFunction: ais.PROJECTILE_AI_4,
     detectionDistance: 200,
   },
 }
@@ -58,6 +58,26 @@ export const ACID_BLAST = {
   color: '#FFFFFF',
   behaviour: {
     aiFunction: ais.PROJECTILE_AI_2,
+    detectionDistance: 200,
+  },
+}
+
+export const LIGHTNING_BLAST = {
+  graphic: graphics.lightning_graphic,
+  scale: 3,
+  color: '#FFFFFF',
+  behaviour: {
+    aiFunction: ais.PROJECTILE_AI_2,
+    detectionDistance: 200,
+  },
+}
+
+export const TALON_BLAST = {
+  graphic: graphics.talon_graphic,
+  scale: 1,
+  color: '#FFFFFF',
+  behaviour: {
+    aiFunction: ais.PROJECTILE_AI_3,
     detectionDistance: 200,
   },
 }
