@@ -39,7 +39,6 @@ export class Level {
       color: HUD_COLOR,
       scale: 1,
     });
-    grid.r = Math.PI / 4;
     gameLoop.registerObject(grid);
   }
 
@@ -77,7 +76,9 @@ export class Level {
         spawn = new Ship(info.template, info.team);
         spawn.behaviour = new Ai({aiFunction: function() {}, detectionDistance: 0});
         game.player = spawn;
+
         game.display.cameraFollowObject = spawn;
+        game.display.cameraR = (typeof(info.r) !== 'undefined' ? info.r : 0);
 
       } else if (info.type == 'Spawner') {
         let effectiveTeam = (typeof info.team !== 'undefined' ? info.team : null );

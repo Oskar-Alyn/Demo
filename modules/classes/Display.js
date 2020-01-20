@@ -13,7 +13,7 @@ export class Display {
     this.cameraY = 0;
     this.cameraR = 0;
     this.cameraTilt = consts.DEFAULT_CAMERA_ANGLE;
-    this.cameraDistance = 100;
+    this.cameraDistance = consts.INITIAL_CAMERA_DISTANCE;
 
     this.x0 = this.canvas.width / 2;
     this.y0;
@@ -33,6 +33,15 @@ export class Display {
     playerSpeed = Math.cos(speedAngle) * playerSpeed; // make speed relative to direction facing
     let angle = ((Math.tanh(playerSpeed / (game.player.speed * 40)) * (1 - consts.MIN_CAMERA_ANGLE))) + consts.MIN_CAMERA_ANGLE
     game.state.cameraTilt = angle; // bind to max 1
+
+    // change camera distance
+    let targetDistance = 100;
+
+    if (this.cameraDistance < this.cameraFollowObject.r) {
+      this.cameraDistance += Math.abs(this.cameraDistance - targetDistance) / consts.DISTANCE_CAMERA_LAG;
+    } else {
+      this.cameraDistance -= Math.abs(this.cameraDistance - targetDistance) / consts.DISTANCE_CAMERA_LAG;
+    }
 
     // move camera
     if (this.cameraFollowObject !== null) {

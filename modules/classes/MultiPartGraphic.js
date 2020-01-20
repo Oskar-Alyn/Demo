@@ -40,6 +40,7 @@ export class MultiPartGraphic {
         color: obj.color,
         scale: obj.scale,
         shield: (typeof obj.shield == 'undefined' ? 1 : obj.shield),
+        shieldMax: (typeof obj.shieldMax == 'undefined' ? 1 : obj.shieldMax),
 
       }, display);
     }
