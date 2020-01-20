@@ -11,7 +11,7 @@ export const VERTICAL_CAMERA_LAG = 40;
 export const DEFAULT_CAMERA_ANGLE = 1;
 export const DEFAULT_CAMERA_ZOOM = 22;
 
-export const GRID_SQUARE_SIZE = 40;
+export const GRID_SQUARE_SIZE = 20;
 
 export const HUD_COLOR = '#606060';
 

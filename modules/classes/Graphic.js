@@ -42,7 +42,8 @@ export class Graphic {
 
   // draws the graphic to the canvas
   draw(aGameObject, display) {
-    let context = display.context;
+    let pastCoordinate;
+    let newCoordinate;
 
     // setup adjusted variables for relative camera
     let scaledGraphic = this.scaleGraphic(this.parts, (aGameObject.scale * display.worldScale));
@@ -53,16 +54,12 @@ export class Graphic {
     let adjustedR = aGameObject.r - display.cameraR;
 
     // showing shields
-    context.globalAlpha = (typeof aGameObject.shield !== 'undefined' ? aGameObject.shield / aGameObject.shieldMax : 1);
+    // context.globalAlpha = (typeof aGameObject.shield !== 'undefined' ? aGameObject.shield / aGameObject.shieldMax : 1);
 
     // draw the graphic
     for (let i = 0; i < scaledGraphic.length; i++) {
       let currentPart = scaledGraphic[i];
       let currentCoordinate = rotateCoord(currentPart[0], adjustedR);
-
-      context.strokeStyle = aGameObject.color;
-      context.lineWidth = this.lineWidth;
-      context.beginPath();
 
       // actual drawing
       for (let ii = 0; ii < currentPart.length; ii++) {
@@ -108,25 +105,34 @@ export class Graphic {
         yCoord += display.y0;
 
         if (ii == 0 || effectiveDistance < 0) {
-          context.moveTo(xCoord, yCoord);
+          newCoordinate = [xCoord, yCoord, effectiveDistance];
         } else {
-          context.lineTo(xCoord, yCoord);
+          pastCoordinate = [newCoordinate[0], newCoordinate[1], newCoordinate[2]];
+          newCoordinate = [xCoord, yCoord, effectiveDistance];
+          display.toDraw[display.toDraw.length] = {
+            x1: pastCoordinate[0],
+            y1: pastCoordinate[1],
+            x2: newCoordinate[0],
+            y2: newCoordinate[1],
+            distance: (newCoordinate[2] + pastCoordinate[2]) / 2,
+            weight: this.lineWidth,
+            color: aGameObject.color,
+            alpha: (typeof aGameObject.shield !== 'undefined' ? aGameObject.shield / aGameObject.shieldMax : 1),
+          };
         }
       }
-      context.stroke();
-
     }
 
-    // draw text
-    if (display.debugMode) {
-      context.fillStyle = aGameObject.color;
-      context.font = "30px Arial";
-      if ( typeof aGameObject.text !== 'undefined' ) {
-        context.fillText(
-          aGameObject.text,
-          display.x0 + adjustedX - 8,
-          20 + (this.maxPoint * aGameObject.scale * display.worldScale) + display.y0 + (display.yFactor * adjustedY));
-      }
-    }
+    // // draw text
+    // if (display.debugMode) {
+    //   // context.fillStyle = aGameObject.color;
+    //   // context.font = "30px Arial";
+    //   if ( typeof aGameObject.text !== 'undefined' ) {
+    //     // context.fillText(
+    //   //     aGameObject.text,
+    //   //     display.x0 + adjustedX - 8,
+    //   //     20 + (this.maxPoint * aGameObject.scale * display.worldScale) + display.y0 + (display.yFactor * adjustedY));
+    //   // }
+    // }
   }
 }

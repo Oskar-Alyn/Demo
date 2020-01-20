@@ -22,6 +22,8 @@ export class Display {
     this.yFactor;
 
     this.debugMode = false;
+
+    this.toDraw = [];
   }
 
   updateCamera(game) {
@@ -61,12 +63,31 @@ export class Display {
 
     // reset canvas
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.toDraw = [];
 
-    // draw all objects
+    // get all lines to draw
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
       if (typeof game.gameLoop.objectsToRun[i].graphic !== 'undefined') {
         game.gameLoop.objectsToRun[i].graphic.draw(game.gameLoop.objectsToRun[i], this);
       }
     }
+
+    // sort by distance to camera
+    this.toDraw.sort(function(a, b) { return b.distance - a.distance });
+
+    // do actual drawing
+    for (let i = 0; i < this.toDraw.length; i++) {
+      let line = this.toDraw[i];
+
+      this.context.strokeStyle = line.color;
+      this.context.lineWidth = line.weight;
+      this.context.globalAlpha = line.alpha;
+
+      this.context.beginPath();
+      this.context.moveTo(line.x1, line.y1);
+      this.context.lineTo(line.x2, line.y2);
+      this.context.stroke();
+    }
+
   }
 }
