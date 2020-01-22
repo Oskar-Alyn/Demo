@@ -1,5 +1,6 @@
 import { GameObject } from './GameObject.js';
 import { Ai } from './Ai.js';
+import { Weapon } from './Weapon.js';
 
 export class Ship extends GameObject {
   constructor(template, team) {
@@ -20,11 +21,10 @@ export class Ship extends GameObject {
     this.shieldMax = template.shieldMax;
     this.shieldRegen = template.shieldRegen;
     this.shieldRecharge = 0;
+
     this.drop = template.drop;
 
-    this.weapon = template.weapon;
-    this.weaponCooldown = 0;
-    this.weaponState = 0;
+    this.weapon = (typeof template.weapon == 'undefined' ? null : new Weapon( template.weapon ));
 
     // control systems
     this.movingForward = false;
@@ -62,7 +62,7 @@ export class Ship extends GameObject {
   // runs weapons if they exist
   weapons(game) {
     if (this.weapon !== null && this.useWeapon) {
-      this.weapon(this, game);
+      this.weapon.firing(this, game);
     }
   }
 

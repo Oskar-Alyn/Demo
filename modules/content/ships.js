@@ -14,7 +14,6 @@ export const BASE_1 = {
     },
     shieldMax: 100,
     shieldRegen: 10,
-    weapon: null,
     drop: objects.CREDIT,
 };
 
