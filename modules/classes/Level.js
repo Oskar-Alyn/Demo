@@ -83,6 +83,7 @@ export class Level {
       } else if (info.type == 'Spawner') {
         let effectiveTeam = (typeof info.team !== 'undefined' ? info.team : null );
         spawn = new Spawner(info.template, this.gridSize * GRID_SQUARE_SIZE, effectiveTeam);
+        spawn.spawnTemplate = info.spawn;
 
       } else if (info.type == 'Object') {
         spawn = new GameObject(info.template);

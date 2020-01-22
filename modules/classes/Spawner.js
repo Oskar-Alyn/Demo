@@ -36,11 +36,6 @@ export class Spawner {
           spawn.y = RN(-1 * this.edgeDistance, this.edgeDistance);
         }
 
-        // move to align with grid
-        let location = rotateCoord([spawn.x, spawn.y, 0], (Math.PI / 4));
-        spawn.x = location[0];
-        spawn.y = location[1];
-
         // point at center
         spawn.r = angleTo(spawn.x, spawn.y, 0, 0);
 

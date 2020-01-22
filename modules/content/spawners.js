@@ -3,58 +3,20 @@ import * as ships from './ships.js';
 import * as objects from './objects.js';
 import * as teams from './teams.js';
 
-export const CREDIT_SPAWNER = new Spawner({
-  spawnType: 'Objects',
-  frequency: 200,
-  spawnTemplate: objects.CREDIT,
+export const FIELD_SPAWNER = new Spawner({
+  spawnType: 'Ships',
+  frequency: 300,
   onlyEdges: false,
 });
 
-export const FIGHTER_1_SPAWNER = new Spawner({
+export const EDGE_SPAWNER = new Spawner({
   spawnType: 'Ships',
   frequency: 500,
-  spawnTemplate: ships.FIGHTER_1,
   onlyEdges: true,
 });
 
-export const FIGHTER_2_SPAWNER = new Spawner({
+export const RARE_EDGE_SPAWNER = new Spawner({
   spawnType: 'Ships',
-  frequency: 3000,
-  spawnTemplate: ships.FIGHTER_2,
-  onlyEdges: false,
-});
-
-export const SKIRMISHER_1_SPAWNER = new Spawner({
-  spawnType: 'Ships',
-  frequency: 800,
-  spawnTemplate: ships.SKIRMISHER_1,
-  onlyEdges: false,
-});
-
-export const HEAVY_1_SPAWNER = new Spawner({
-  spawnType: 'Ships',
-  frequency: 3000,
-  spawnTemplate: ships.HEAVY_1,
-  onlyEdges: false,
-});
-
-export const MULTIPART_1_SPAWNER = new Spawner({
-  spawnType: 'Ships',
-  frequency: 1000,
-  spawnTemplate: ships.MULTIPART,
-  onlyEdges: false,
-});
-
-export const FIREBEAST_1_SPAWNER = new Spawner({
-  spawnType: 'Ships',
-  frequency: 800,
-  spawnTemplate: ships.FIREBEAST_1,
+  frequency: 4000,
   onlyEdges: true,
-});
-
-export const ACIDBEAST_1_SPAWNER = new Spawner({
-  spawnType: 'Ships',
-  frequency: 2000,
-  spawnTemplate: ships.ACIDBEAST_1,
-  onlyEdges: false,
 });
