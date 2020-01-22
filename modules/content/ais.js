@@ -57,50 +57,14 @@ export const COLLECTIBLE_AI = function(aShip, ai, game) {
   aShip.Vr = 0.02;
 };
 
-export const PROJECTILE_AI = function(aShip, ai, game) {
+export const PROJECTILE_AI = function(projectile, ai, game) {
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
-    let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
+    let hitCircle = ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
     if (ai.targetDistance < hitCircle) {
-      ai.aiTarget.shield -= 1;
-      game.gameLoop.unregisterObject(aShip);
+      ai.aiTarget.shield -= projectile.damage;
+      game.gameLoop.unregisterObject(projectile);
     }
   }
 
-  aShip.push(aShip.r + Math.PI * -0.5, 0.15);
-};
-
-export const PROJECTILE_AI_2 = function(aShip, ai, game) {
-  if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
-    let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
-    if (ai.targetDistance < hitCircle) {
-      ai.aiTarget.shield -= 2;
-      game.gameLoop.unregisterObject(aShip);
-    }
-  }
-
-  aShip.push(aShip.r + Math.PI * -0.5, 0.15);
-};
-
-export const PROJECTILE_AI_3 = function(aShip, ai, game) {
-  if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
-    let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
-    if (ai.targetDistance < hitCircle) {
-      ai.aiTarget.shield -= 4;
-      game.gameLoop.unregisterObject(aShip);
-    }
-  }
-
-  aShip.push(aShip.r + Math.PI * -0.5, 0.15);
-};
-
-export const PROJECTILE_AI_4 = function(aShip, ai, game) {
-  if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
-    let hitCircle=  ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
-    if (ai.targetDistance < hitCircle) {
-      ai.aiTarget.shield -= 7;
-      game.gameLoop.unregisterObject(aShip);
-    }
-  }
-
-  aShip.push(aShip.r + Math.PI * -0.5, 0.15);
+  projectile.push(projectile.r + Math.PI * -0.5, 0.15);
 };

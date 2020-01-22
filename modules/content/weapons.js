@@ -1,10 +1,10 @@
 import * as graphics from './shipGraphics.js';
-import * as objects from './objects.js';
-import { GameObject } from '../classes/GameObject.js';
+import * as projectiles from './projectiles.js';
+import { Projectile } from '../classes/Projectile.js';
 import { rotateCoord } from '../mathExtention.js';
 
 function spawnProjectile(aTemplate, aShip) {
-  let returnObject = new GameObject(aTemplate);
+  let returnObject = new Projectile(aTemplate);
 
   returnObject.color = aShip.color;
   returnObject.x = aShip.x;
@@ -21,7 +21,7 @@ export const FIGHTER_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 5;
 
     // spawn a laser
-    let laser = spawnProjectile(objects.BASIC_LASER, aShip);
+    let laser = spawnProjectile(projectiles.BASIC_LASER, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
@@ -48,8 +48,8 @@ export const FIGHTER_2_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 4;
 
     // spawn a laser
-    let laser1 = spawnProjectile(objects.BASIC_LASER, aShip);
-    let laser2 = spawnProjectile(objects.BASIC_LASER, aShip);
+    let laser1 = spawnProjectile(projectiles.BASIC_LASER, aShip);
+    let laser2 = spawnProjectile(projectiles.BASIC_LASER, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
@@ -82,7 +82,7 @@ export const SKIRMISHER_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 5;
 
     // spawn a laser
-    let laser = spawnProjectile(objects.SKIRMISHER_LASER, aShip);
+    let laser = spawnProjectile(projectiles.SKIRMISHER_LASER, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
@@ -109,7 +109,7 @@ export const HEAVY_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 30;
 
     // spawn a laser
-    let laser = spawnProjectile(objects.HEAVY_LASER, aShip);
+    let laser = spawnProjectile(projectiles.HEAVY_LASER, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
@@ -134,7 +134,7 @@ export const FIRE_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 4;
 
     // spawn a laser
-    let laser = spawnProjectile(objects.FIRE_BLAST, aShip);
+    let laser = spawnProjectile(projectiles.FIRE_BLAST, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
@@ -161,8 +161,8 @@ export const ACID_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 3;
 
     // spawn a laser
-    let laser1 = spawnProjectile(objects.ACID_BLAST, aShip);
-    let laser2 = spawnProjectile(objects.ACID_BLAST, aShip);
+    let laser1 = spawnProjectile(projectiles.ACID_BLAST, aShip);
+    let laser2 = spawnProjectile(projectiles.ACID_BLAST, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
@@ -195,7 +195,7 @@ export const LIGHTNING_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 5;
 
     // spawn a laser
-    let laser = spawnProjectile(objects.LIGHTNING_BLAST, aShip);
+    let laser = spawnProjectile(projectiles.LIGHTNING_BLAST, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
@@ -222,7 +222,7 @@ export const TALON_1_WEAPON = function(aShip, game) {
     aShip.weaponCooldown = 10;
 
     // spawn a laser
-    let laser = spawnProjectile(objects.TALON_BLAST, aShip);
+    let laser = spawnProjectile(projectiles.TALON_BLAST, aShip);
 
     if (aShip.weaponState == 0) {
       aShip.weaponState = 1;
