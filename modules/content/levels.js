@@ -10,6 +10,9 @@ export const SAMPLE_LEVEL = new Level({
     // player
     {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 450, y: 450, r: Math.PI * -0.25},
 
+    // the star
+    {type: 'Object', template: objects.SUN},
+
     // blue base
     {type: 'Ship', template: ships.BASE_1, team: teams.BLUE, x: 550, y: 550},
     {type: 'Ship', template: ships.BASE_1, team: teams.BLUE, x: 450, y: 550},
@@ -40,17 +43,7 @@ export const SAMPLE_LEVEL = new Level({
 export const TEST_LEVEL = new Level({
   gridSize: 12,
   spawns: [
-    // player
     {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 150, y: 150, r: Math.PI * -0.25},
-
-    // blue base
-    {type: 'Ship', template: ships.BASE_1, team: teams.BLUE, x: 250, y: 250},
-
-    // red base
-    {type: 'Ship', template: ships.BASE_1, team: teams.RED, x: -250, y: -250},
-
-    // team spawners
-    {type: 'Spawner', template: spawners.FIELD_SPAWNER, spawn: ships.FIGHTER_1, team: teams.BLUE},
-    {type: 'Spawner', template: spawners.FIELD_SPAWNER, spawn: ships.FIGHTER_1, team: teams.RED},
+    {type: 'Object', template: objects.SUN},
   ],
 });

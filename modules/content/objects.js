@@ -9,3 +9,13 @@ export const CREDIT = {
     detectionDistance: 30,
   },
 }
+
+export const SUN = {
+  graphic: graphics.sun_graphic,
+  color: '#FFFFFF',
+  scale: 40,
+  behaviour: {
+    aiFunction: ais.SUN_AI,
+    detectionDistance: 1,
+  },
+}

@@ -27,6 +27,8 @@ export class MultiPartGraphic {
       let z = (typeof part.z == 'undefined' ? 0 : part.z * obj.scale);
       let r = obj.r
 
+      let scale = (typeof part.scale == 'undefined' ? obj.scale : part.scale * obj.scale);
+
       let position = rotateCoord([x, y, z], r);
 
       x = obj.x + position[0];
@@ -38,7 +40,7 @@ export class MultiPartGraphic {
         x: x, y: y, z: z, r: r,
 
         color: obj.color,
-        scale: obj.scale,
+        scale: scale,
         alpha: obj.alpha,
 
       }, display);

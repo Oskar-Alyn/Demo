@@ -4,6 +4,13 @@ export const BASE_AI = function(aShip, ai, game) {
   aShip.turningLeft = true;
 };
 
+export const SUN_AI = function(sun, ai, game) {
+  for (let i = 0; i < sun.graphic.parts.length; i++) {
+    let part = sun.graphic.parts[i];
+    part.r += (((i % 2) * 2) - 1) / (4000 / (i + 10));
+  }
+};
+
 export const FIGHTER_AI = function(aShip, ai, game) {
   // defaults
   aShip.movingForward = false;
