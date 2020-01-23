@@ -13,7 +13,11 @@ export class GameObject {
     this.Vr = 0;
 
     // visual properties
-    this.graphic = template.graphic;
+    if (typeof template.graphic == 'function') {
+      this.graphic = template.graphic();
+    } else {
+      this.graphic = template.graphic;
+    }
     this.color = (typeof template.color !== 'undefined' ? template.color : '#FFFFFF');
     this.scale = (typeof template.scale !== 'undefined' ? template.scale : 1);
     this.alpha = 1;

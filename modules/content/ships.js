@@ -1,10 +1,11 @@
 import * as graphics from './shipGraphics.js';
+import * as generators from './graphicGenerators.js';
 import * as objects from './objects.js'
 import * as weapons from './weapons.js';
 import * as ais from './ais.js';
 
 export const BASE_1 = {
-    graphic: graphics.base_1_graphic,
+    graphic: generators.tower_generator,
     scale: 2,
     speed: 0,
     rotationSpeed: 0.0001,
