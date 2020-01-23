@@ -69,6 +69,7 @@ export const PROJECTILE_AI = function(projectile, ai, game) {
     let hitCircle = ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
     if (ai.targetDistance < hitCircle) {
       ai.aiTarget.shield -= projectile.damage;
+      ai.aiTarget.color = '#FFFFFF';
       game.gameLoop.unregisterObject(projectile);
     }
   }

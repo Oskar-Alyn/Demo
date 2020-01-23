@@ -95,7 +95,8 @@ export class Ship extends GameObject {
   }
 
   run(game) {
-    this.alpha = this.shield / this.shieldMax;
+    this.color = this.team.color;
+    this.alpha = 0.2 + 0.8 * (this.shield / this.shieldMax);
 
     this.chargeShield();
     this.weapons(game);
