@@ -39,8 +39,8 @@ export const FIGHTER_AI = function(aShip, ai, game) {
     }
 
   } else {
-    // no target case
-    ai.targetDistance = ai.detectionRange;
+    // no target case, doesn't always reset because lasers can increase
+    if (ai.targetDistance < ai.detectionRange) {ai.targetDistance = ai.detectionRange};
 
   }
 };
@@ -66,10 +66,15 @@ export const COLLECTIBLE_AI = function(aShip, ai, game) {
 
 export const PROJECTILE_AI = function(projectile, ai, game) {
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null) {
+
+    // nearby lasers pump up detection
+    ai.aiTarget.behaviour.targetDistance += 100;
+
+    // detect hits and do damage
     let hitCircle = ai.aiTarget.graphic.maxPoint * ai.aiTarget.scale;
     if (ai.targetDistance < hitCircle) {
       ai.aiTarget.shield -= projectile.damage;
-      ai.aiTarget.color = '#FFFFFF';
+      ai.aiTarget.color = '#FFFFFF'; // hit flash
       game.gameLoop.unregisterObject(projectile);
     }
   }

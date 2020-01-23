@@ -44,6 +44,6 @@ export const TEST_LEVEL = new Level({
   gridSize: 12,
   spawns: [
     {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 150, y: 150, r: Math.PI * -0.25},
-    {type: 'Object', template: objects.SUN},
+    {type: 'Ship', template: ships.FIGHTER_1, team: teams.RED, x: -550, y: -550},
   ],
 });

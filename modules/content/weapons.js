@@ -19,7 +19,7 @@ function spawnProjectile(aTemplate, aShip) {
 }
 
 export const FIGHTER_1_WEAPON = {
-  cooldownTime: 5,
+  cooldownTime: 7,
   pattern: patterns.staggered,
   spread: [0.8, -0.8],
   projectile: projectiles.BASIC_LASER,
