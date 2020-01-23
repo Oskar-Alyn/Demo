@@ -5,7 +5,7 @@ import * as teams from './teams.js';
 
 export const FIELD_SPAWNER = new Spawner({
   spawnType: 'Ships',
-  frequency: 300,
+  frequency: 400,
   onlyEdges: false,
 });
 
@@ -17,6 +17,6 @@ export const EDGE_SPAWNER = new Spawner({
 
 export const RARE_EDGE_SPAWNER = new Spawner({
   spawnType: 'Ships',
-  frequency: 4000,
+  frequency: 6000,
   onlyEdges: true,
 });
