@@ -33,7 +33,7 @@ export class Weapon {
       // fire weapon
       this.pattern(this, ship, game);
       //  recoil
-      ship.push(ship.r + ship.offset, this.recoil)
+      ship.push(ship.r + ship.offset, -1 * this.recoil)
 
     } else {
       this.cooldown -= 1;
