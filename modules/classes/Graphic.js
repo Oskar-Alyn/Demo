@@ -108,7 +108,7 @@ export class Graphic {
             distance: (newCoordinate[2] + pastCoordinate[2]) / 2,
             weight: this.lineWidth,
             color: aGameObject.color,
-            alpha: (typeof aGameObject.shield !== 'undefined' ? aGameObject.shield / aGameObject.shieldMax : 1),
+            alpha: aGameObject.alpha,
           };
         }
       }

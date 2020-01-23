@@ -10,7 +10,7 @@ export const VERTICAL_CAMERA_LAG = 40;
 export const DISTANCE_CAMERA_LAG = 40;
 
 export const DEFAULT_CAMERA_ANGLE = 0;
-export const DEFAULT_CAMERA_ZOOM = 22; // use to hide unloaded map
+export const DEFAULT_CAMERA_ZOOM = 22; // use to hide unrendered map
 export const INITIAL_CAMERA_DISTANCE = 400;
 
 export const GRID_SQUARE_SIZE = 20;

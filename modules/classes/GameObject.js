@@ -16,6 +16,7 @@ export class GameObject {
     this.graphic = template.graphic;
     this.color = (typeof template.color !== 'undefined' ? template.color : '#FFFFFF');
     this.scale = (typeof template.scale !== 'undefined' ? template.scale : 1);
+    this.alpha = 1;
 
     // behaviour properties
     if (typeof(template.behaviour) == 'undefined') {
