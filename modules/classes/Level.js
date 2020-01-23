@@ -39,6 +39,7 @@ export class Level {
       color: HUD_COLOR,
       scale: 1,
     });
+    grid.alpha = 0.8;
     gameLoop.registerObject(grid);
   }
 

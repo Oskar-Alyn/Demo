@@ -5,7 +5,7 @@ import * as weapons from './weapons.js';
 import * as ais from './ais.js';
 
 export const BASE_1 = {
-    graphic: generators.tower_generator,
+    graphic: generators.base_1_generator,
     scale: 2,
     speed: 0,
     rotationSpeed: 0.0001,

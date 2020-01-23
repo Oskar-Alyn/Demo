@@ -2,11 +2,8 @@ import { RN } from '../mathExtention.js';
 import { MultiPartGraphic } from '../classes/MultiPartGraphic.js';
 import * as parts from './partialGraphics.js';
 
-export const tower_generator = function() {
+let tower_generator = function(min, max) {
   let returnGraphic = [];
-
-  let min = 12;
-  let max = 20;
 
   for (let i = -1 * RN(min, max); i <= RN(min, max); i++) {
     returnGraphic[returnGraphic.length] = {
@@ -28,4 +25,8 @@ export const tower_generator = function() {
   returnGraphic[returnGraphic.length - 1].graphic = parts.base_room
 
   return new MultiPartGraphic(returnGraphic);;
+}
+
+export const base_1_generator = function() {
+  return tower_generator(4, 9);
 }
