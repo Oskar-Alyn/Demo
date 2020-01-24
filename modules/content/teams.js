@@ -18,7 +18,7 @@ export const YELLOW = {
   color: '#FFFF00',
 }
 
-export const GREEN = {
+export const ORANGE = {
   color: '#FF8000',
 }
 
