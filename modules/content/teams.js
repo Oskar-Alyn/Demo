@@ -18,6 +18,10 @@ export const YELLOW = {
   color: '#FFFF00',
 }
 
+export const GREEN = {
+  color: '#FF8000',
+}
+
 export const WHITE = {
   color: '#FFFFFF',
 }
