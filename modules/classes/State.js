@@ -5,5 +5,7 @@ export class State {
     this.playerCredits = 0;
     this.cameraTilt = consts.DEFAULT_CAMERA_ANGLE;
     this.worldScale = consts.DEFAULT_CAMERA_ZOOM;
+
+    this.debugMode = false;
   }
 }

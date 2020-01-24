@@ -62,6 +62,7 @@ export class Display {
 
   run (game) {
     this.worldScale = game.state.worldScale; // used by graphics
+    this.debugMode = game.state.debugMode;
 
     this.updateCamera(game);
 
@@ -74,7 +75,10 @@ export class Display {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.toDraw = [];
 
-    // get all lines to draw
+    // get all lines to draw, and draws text
+    this.context.font = "30px Monospace";
+    this.context.fillStyle = '#FFFFFF';
+
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
       if (typeof game.gameLoop.objectsToRun[i].graphic !== 'undefined') {
         game.gameLoop.objectsToRun[i].graphic.draw(game.gameLoop.objectsToRun[i], this);

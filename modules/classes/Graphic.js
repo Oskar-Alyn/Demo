@@ -64,6 +64,14 @@ export class Graphic {
     return effectiveDistance;
   }
 
+  // draws text if set while debugging
+  drawDebugText(aGameObject, display, x, y) {
+    if (display.debugMode && typeof aGameObject.text !== 'undefined') {
+      display.context.fillText(aGameObject.text, x, y - (this.maxPoint * aGameObject.scale + 30))
+    }
+  }
+
+
   // draws the graphic to the canvas
   draw(aGameObject, display) {
     let pastCoordinate, newCoordinate; // vars for line ends
@@ -95,6 +103,9 @@ export class Graphic {
         // if on screen, return the line to display
         if (ii == 0 || effectiveDistance < 0) {
           newCoordinate = [xCoord, yCoord, effectiveDistance];
+          if (i == 0 && ii == 0) {
+            this.drawDebugText(aGameObject, display, xCoord, yCoord); // draw debug text on first point
+          }
         } else {
           pastCoordinate = [newCoordinate[0], newCoordinate[1], newCoordinate[2]];
           newCoordinate = [xCoord, yCoord, effectiveDistance];

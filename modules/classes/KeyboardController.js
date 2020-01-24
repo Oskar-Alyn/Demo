@@ -20,6 +20,9 @@ export class KeyboardController {
     if (e.keyCode == 65) { this.s = true; };
     if (e.keyCode == 68) { this.d = true; };
     if (e.keyCode == 32) { this.space = true; };
+
+    if (e.keyCode == 80) { this.p = true; };
+
     if (e.keyCode == 187) { this.plus = true };
     if (e.keyCode == 189) { this.minus = true };
   }
@@ -30,6 +33,9 @@ export class KeyboardController {
     if (e.keyCode == 65) { this.s = false; };
     if (e.keyCode == 68) { this.d = false; };
     if (e.keyCode == 32) { this.space = false; };
+
+    if (e.keyCode == 80) { this.p = false; };
+
     if (e.keyCode == 187) { this.plus = false };
     if (e.keyCode == 189) { this.minus = false };
   }
@@ -54,6 +60,10 @@ export class KeyboardController {
     game.player.useWeapon = this.space;
   }
 
+  runP (game) {
+    game.state.debugMode = this.p;
+  }
+
   runPlus (game) {
     if (this.plus) {
       game.state.worldScale += 0.05;
@@ -72,6 +82,9 @@ export class KeyboardController {
     this.runS(game);
     this.runD(game);
     this.runSpace(game);
+
+    this.runP(game);
+
     this.runPlus(game);
     this.runMinus(game);
   }
