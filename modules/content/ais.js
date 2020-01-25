@@ -81,5 +81,11 @@ export const PROJECTILE_AI = function(projectile, ai, game) {
     }
   }
 
+  // decay over time
+  projectile.alpha -= 0.002;
+  if (projectile.alpha <= 0.1) {
+    game.gameLoop.unregisterObject(projectile);
+  }
+
   projectile.push(projectile.yaw+ Math.PI * -0.5, 0.15);
 };
