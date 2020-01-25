@@ -8,7 +8,7 @@ export const SAMPLE_LEVEL = new Level({
   gridSize: 30,
   spawns: [
     // player
-    {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 450, y: 450, r: Math.PI * -0.25},
+    {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 450, y: 450, yaw: Math.PI * -0.25},
 
     // the star
     {type: 'Object', template: objects.SUN},

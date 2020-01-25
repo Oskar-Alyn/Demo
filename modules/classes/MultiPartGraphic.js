@@ -1,4 +1,4 @@
-import { rotateCoord } from '../mathExtention.js';
+import { rotateCoord, rollCoord } from '../mathExtention.js';
 
 export class MultiPartGraphic {
   constructor (parts) {
@@ -25,19 +25,25 @@ export class MultiPartGraphic {
       let x = (typeof part.x == 'undefined' ? 0 : part.x * obj.scale);
       let y = (typeof part.y == 'undefined' ? 0 : part.y * obj.scale);
       let z = (typeof part.z == 'undefined' ? 0 : part.z * obj.scale);
-      let r = obj.r
+      let yaw = obj.yaw;
+      let roll = obj.roll;
+      let pitch = obj.pitch;
 
       let scale = (typeof part.scale == 'undefined' ? obj.scale : part.scale * obj.scale);
 
-      let position = rotateCoord([x, y, z], r);
+      let position = rollCoord([x, y, z], roll);
+      position = rotateCoord(position, yaw);
 
       x = obj.x + position[0];
       y = obj.y + position[1];
       z = obj.z + position[2];
-      r = (typeof part.r == 'undefined' ? obj.r : obj.r + part.r);
+
+      yaw = (typeof part.yaw == 'undefined' ? obj.yaw : obj.yaw + part.yaw);
+      roll = (typeof part.roll == 'undefined' ? obj.roll : obj.roll + part.roll);
 
       part.graphic.draw({
-        x: x, y: y, z: z, r: r,
+        x: x, y: y, z: z,
+        yaw: yaw, roll: roll, pitch: pitch,
 
         color: obj.color,
         scale: scale,

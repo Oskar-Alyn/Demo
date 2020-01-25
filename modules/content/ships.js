@@ -51,8 +51,8 @@ export const FIGHTER_2 = {
 export const SKIRMISHER_1 = {
     graphic: graphics.winged_1_graphic,
     scale: 2,
-    speed: 0.026,
-    rotationSpeed: 0.0016,
+    speed: 0.052,
+    rotationSpeed: 0.0012,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
       detectionDistance: 200,

@@ -14,6 +14,7 @@ export class Display {
     this.cameraR = 0;
     this.cameraTilt = consts.DEFAULT_CAMERA_ANGLE;
     this.cameraDistance = consts.INITIAL_CAMERA_DISTANCE;
+    this.targetCameraDistance = consts.INITIAL_CAMERA_DISTANCE;
 
     this.x0 = this.canvas.width / 2;
     this.y0;
@@ -29,28 +30,26 @@ export class Display {
   updateCamera(game) {
     // determine camera tilt
     let playerSpeed = pythagorean(game.player.Vx, game.player.Vy, 0, 0);
-    let speedAngle = (game.player.r - game.player.offset) - angleTo(game.player.Vx, game.player.Vy, 0, 0);
+    let speedAngle = (game.player.yaw- game.player.offset) - angleTo(game.player.Vx, game.player.Vy, 0, 0);
     playerSpeed = Math.cos(speedAngle) * playerSpeed; // make speed relative to direction facing
     let angle = ((Math.tanh(playerSpeed / (game.player.speed * 40)) * (1 - consts.MIN_CAMERA_ANGLE))) + consts.MIN_CAMERA_ANGLE
     game.state.cameraTilt = angle; // bind to max 1
 
-    // change camera distance
-    let targetDistance = 100;
-
-    if (this.cameraDistance < this.cameraFollowObject.r) {
-      this.cameraDistance += Math.abs(this.cameraDistance - targetDistance) / consts.DISTANCE_CAMERA_LAG;
+    this.targetCameraDistance = 100 * (0.8 + playerSpeed / 3);
+    if (this.cameraDistance < this.targetCameraDistance) {
+      this.cameraDistance += Math.abs(this.cameraDistance - this.targetCameraDistance) / consts.DISTANCE_CAMERA_LAG;
     } else {
-      this.cameraDistance -= Math.abs(this.cameraDistance - targetDistance) / consts.DISTANCE_CAMERA_LAG;
+      this.cameraDistance -= Math.abs(this.cameraDistance - this.targetCameraDistance) / consts.DISTANCE_CAMERA_LAG;
     }
 
     // move camera
     if (this.cameraFollowObject !== null) {
       this.cameraX = this.cameraFollowObject.x;
       this.cameraY = this.cameraFollowObject.y;
-      if (this.cameraR < this.cameraFollowObject.r) {
-        this.cameraR += Math.abs(this.cameraR - this.cameraFollowObject.r) / consts.HORIZONTAL_CAMERA_LAG;
+      if (this.cameraR < this.cameraFollowObject.yaw) {
+        this.cameraR += Math.abs(this.cameraR - this.cameraFollowObject.yaw) / consts.HORIZONTAL_CAMERA_LAG;
       } else {
-        this.cameraR -= Math.abs(this.cameraR - this.cameraFollowObject.r) / consts.HORIZONTAL_CAMERA_LAG;
+        this.cameraR -= Math.abs(this.cameraR - this.cameraFollowObject.yaw) / consts.HORIZONTAL_CAMERA_LAG;
       }
       if (this.cameraTilt < game.state.cameraTilt) {
         this.cameraTilt += Math.abs(this.cameraTilt - game.state.cameraTilt) / consts.VERTICAL_CAMERA_LAG;

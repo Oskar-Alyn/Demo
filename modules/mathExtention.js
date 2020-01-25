@@ -2,7 +2,7 @@ export function RN (min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-// does the trigonometry to rotate a coordinate
+// does the trigonometry to rotate a coordinate around a point
 export function rotateCoord(coord, rotation) {
   // get cartesian coordinates
   let x = coord[0];
@@ -26,6 +26,31 @@ export function rotateCoord(coord, rotation) {
   y = r * Math.sin(t);
 
   return [x, y, coord[2]];
+}
+
+export function rollCoord(coord, roll) {
+  // get cartesian coordinates
+  let x = coord[0];
+  let z = coord[2];
+
+  // check for invalid coordinates
+  if (x == 0 && z == 0) {
+    return coord;
+  }
+
+  // convert to polar coordinates
+  let r = Math.sqrt((x * x) + (z * z));
+  let t = Math.atan(z / x);
+  if (x < 0) { t += Math.PI }
+
+  // add rotation
+  t += roll;
+
+  // convert back to cartesian coordinates
+  x = r * Math.cos(t);
+  z = r * Math.sin(t);
+
+  return [x, coord[1], z];
 }
 
 // find r from position 1 to position 2

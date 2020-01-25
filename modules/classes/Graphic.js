@@ -1,4 +1,5 @@
 import {
+  rollCoord,
   rotateCoord,
   pythagorean,
   angleTo,
@@ -48,7 +49,7 @@ export class Graphic {
     let relevantCameraY = display.cameraY - cameraDistance * Math.sin(Math.PI * -0.5 + display.cameraR);
     let relevantCameraZ =                   cameraDistance * Math.sin(Math.PI * 0.5 + display.cameraTilt);
 
-    let physCoordinate = rotateCoord(part, aGameObject.r);
+    let physCoordinate = rotateCoord(part, aGameObject.yaw);
 
     let xDistance = aGameObject.x + (physCoordinate[0] * aGameObject.scale) - relevantCameraX;
     let yDistance = aGameObject.y + (physCoordinate[1] * aGameObject.scale) - relevantCameraY;
@@ -82,13 +83,14 @@ export class Graphic {
     let adjustedX = adjustedPosition[0] * display.worldScale;
     let adjustedY = adjustedPosition[1] * display.worldScale;
     let adjustedZ = adjustedPosition[2] * display.worldScale;
-    let adjustedR = aGameObject.r - display.cameraR;
+    let adjustedR = aGameObject.yaw- display.cameraR;
 
     // generate the lines
     for (let i = 0; i < scaledGraphic.length; i++) {
       for (let ii = 0; ii < scaledGraphic[i].length; ii++) {
         let effectiveDistance = this.findEffectiveDistance(display, aGameObject, this.parts[i][ii]);
-        let currentCoordinate = rotateCoord(scaledGraphic[i][ii], adjustedR);
+        let currentCoordinate = rollCoord(scaledGraphic[i][ii], aGameObject.roll);
+        currentCoordinate = rotateCoord(currentCoordinate, adjustedR);
 
         // calculate the two coordinates
         let xCoord = adjustedX + currentCoordinate[0];

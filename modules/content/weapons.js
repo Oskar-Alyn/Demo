@@ -11,7 +11,7 @@ function spawnProjectile(aTemplate, aShip) {
   returnObject.color = aShip.color;
   returnObject.x = aShip.x;
   returnObject.y = aShip.y;
-  returnObject.r = aShip.r;
+  returnObject.yaw = aShip.yaw;
   returnObject.Vx = aShip.Vx;
   returnObject.Vy = aShip.Vy;
 
@@ -19,7 +19,7 @@ function spawnProjectile(aTemplate, aShip) {
 }
 
 export const FIGHTER_1_WEAPON = {
-  cooldownTime: 7,
+  cooldownTime: 9,
   pattern: patterns.staggered,
   spread: [0.8, -0.8],
   projectile: projectiles.BASIC_LASER,

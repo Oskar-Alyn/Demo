@@ -79,7 +79,7 @@ export class Level {
         game.player = spawn;
 
         game.display.cameraFollowObject = spawn;
-        game.display.cameraR = (typeof(info.r) !== 'undefined' ? info.r : 0);
+        game.display.cameraR = (typeof(info.yaw) !== 'undefined' ? info.yaw: 0);
 
       } else if (info.type == 'Spawner') {
         let effectiveTeam = (typeof info.team !== 'undefined' ? info.team : null );
@@ -95,7 +95,7 @@ export class Level {
       if (typeof(info.x) !== 'undefined') { spawn.x = info.x };
       if (typeof(info.y) !== 'undefined') { spawn.y = info.y };
       if (typeof(info.z) !== 'undefined') { spawn.z = info.z };
-      if (typeof(info.r) !== 'undefined') { spawn.r = info.r };
+      if (typeof(info.yaw) !== 'undefined') { spawn.yaw= info.yaw};
 
       // add the spawn to the game
       game.gameLoop.registerObject(spawn);

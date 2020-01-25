@@ -2,12 +2,14 @@ import { RN, angleTo, pythagorean } from '../mathExtention.js';
 
 export const BASE_AI = function(aShip, ai, game) {
   aShip.turningLeft = true;
+  aShip.roll = 0;
 };
 
 export const SUN_AI = function(sun, ai, game) {
   for (let i = 0; i < sun.graphic.parts.length; i++) {
     let part = sun.graphic.parts[i];
-    part.r += (((i % 2) * 2) - 1) / (4000 / (i + 10));
+    part.yaw += (((i % 2) * 2) - 1) / (4000 / (i + 10));
+    part.roll -= (((i % 2) * 2) - 1) / (4000 / (i + 10));
   }
 };
 
@@ -21,7 +23,7 @@ export const FIGHTER_AI = function(aShip, ai, game) {
   if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null && ai.aiTarget.shield > 0) {
     // find angle to target
     let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y) + Math.PI * 0.5;
-    let angleOff = (targetAngle - aShip.r) % (Math.PI * 2);
+    let angleOff = (targetAngle - aShip.yaw) % (Math.PI * 2);
 
     aShip.movingForward = true;
     aShip.useWeapon = (Math.abs(angleOff) * ai.targetDistance < 50);
@@ -79,5 +81,5 @@ export const PROJECTILE_AI = function(projectile, ai, game) {
     }
   }
 
-  projectile.push(projectile.r + Math.PI * -0.5, 0.15);
+  projectile.push(projectile.yaw+ Math.PI * -0.5, 0.15);
 };

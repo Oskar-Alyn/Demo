@@ -7,7 +7,9 @@ export class GameObject {
     this.x = 0;
     this.y = 0;
     this.z = 0;
-    this.r = 0;
+    this.yaw = 0; // yaw
+    this.roll = 0;
+    this.pitch = 0;
     this.Vx = 0;
     this.Vy = 0;
     this.Vr = 0;
@@ -51,7 +53,7 @@ export class GameObject {
   doMotion () {
     this.x += this.Vx;
     this.y += this.Vy;
-    this.r += this.Vr;
+    this.yaw += this.Vr;
     this.Vx *= LINEAR_FRICTION;
     this.Vy *= LINEAR_FRICTION;
     this.Vr *= ROTATION_FRICTION;

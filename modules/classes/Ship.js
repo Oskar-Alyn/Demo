@@ -1,6 +1,7 @@
 import { GameObject } from './GameObject.js';
 import { Ai } from './Ai.js';
 import { Weapon } from './Weapon.js';
+import { pythagorean } from '../mathExtention.js';
 
 export class Ship extends GameObject {
   constructor(template, team) {
@@ -39,8 +40,14 @@ export class Ship extends GameObject {
 
   // returns a functional rotation value
   getR () {
-    return (this.r + this.offset);
+    return (this.yaw+ this.offset);
   }
+
+  // gets actual velocity
+  findVelocity () {
+    return (pythagorean(Math.abs(this.Vx), Math.abs(this.Vy), 0, 0));
+  }
+
 
   // moves the ship according to behaviour and stats
   move() {
@@ -52,11 +59,13 @@ export class Ship extends GameObject {
       this.Vr *= 0.4;
     }
     if (this.turningLeft) {
-      this.Vr -= this.rotationSpeed;;
+      this.Vr -= this.rotationSpeed / (1 + this.findVelocity());
     }
     if (this.turningRight) {
-      this.Vr += this.rotationSpeed;;
+      this.Vr += this.rotationSpeed / (1 + this.findVelocity());
     }
+
+    this.roll = this.Vr * -30;
   }
 
   // runs weapons if they exist

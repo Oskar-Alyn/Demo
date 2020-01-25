@@ -26,7 +26,7 @@ export class Spawner {
         spawn = new GameObject(this.spawnTemplate);
       }
 
-      spawn.r = RN(0, 3141) / 100;
+      spawn.yaw= RN(0, 3141) / 100;
       if (this.onlyEdges) {
         if (RN(0, 1) == 0) {
           spawn.x = RN(-1 * this.edgeDistance, this.edgeDistance);
@@ -37,12 +37,12 @@ export class Spawner {
         }
 
         // point at center
-        spawn.r = angleTo(spawn.x, spawn.y, 0, 0);
+        spawn.yaw= angleTo(spawn.x, spawn.y, 0, 0);
 
       } else {
         spawn.x = RN(-1 * this.edgeDistance, this.edgeDistance);
         spawn.y = RN(-1 * this.edgeDistance, this.edgeDistance);
-        spawn.r = RN(0, 3141) / 100;
+        spawn.yaw= RN(0, 3141) / 100;
 
         // move to align with grid
         let location = rotateCoord([spawn.x, spawn.y, 0], (Math.PI / 4));

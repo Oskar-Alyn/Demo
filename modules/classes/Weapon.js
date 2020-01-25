@@ -19,7 +19,7 @@ export class Weapon {
     returnObject.color = ship.color;
     returnObject.x = ship.x;
     returnObject.y = ship.y;
-    returnObject.r = ship.r;
+    returnObject.yaw= ship.yaw;
     returnObject.Vx = ship.Vx;
     returnObject.Vy = ship.Vy;
 
@@ -33,7 +33,7 @@ export class Weapon {
       // fire weapon
       this.pattern(this, ship, game);
       //  recoil
-      ship.push(ship.r + ship.offset, -1 * this.recoil)
+      ship.push(ship.yaw+ ship.offset, -1 * this.recoil)
 
     } else {
       this.cooldown -= 1;

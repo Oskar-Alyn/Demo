@@ -7,9 +7,9 @@ export const credit_graphic = new Graphic([
 ], 2);
 
 export const sun_graphic = new MultiPartGraphic([
-  // r needs to be initialized for spin
-  {graphic: parts.icosahedron, r: 0},
-  {graphic: parts.hexagon, scale: 2.5, r: 0},
-  {graphic: parts.hexagon, scale: 3.0, r: 0},
-  {graphic: parts.hexagon, scale: 3.5, r: 0},
+  // yaw needs to be initialized for spin
+  {graphic: parts.icosahedron, yaw: 0, roll: 0},
+  {graphic: parts.hexagon, scale: 2.5, yaw: 0, roll: 0},
+  {graphic: parts.hexagon, scale: 3.0, yaw: 0, roll: 0},
+  {graphic: parts.hexagon, scale: 3.5, yaw: 0, roll: 0},
 ]);

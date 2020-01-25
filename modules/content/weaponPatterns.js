@@ -7,8 +7,8 @@ export const staggered = function(weapon, ship, game) {
     weapon.state += 1;
   }
 
-  projectile.x += Math.cos(projectile.r) * weapon.spread[weapon.state];
-  projectile.y += Math.sin(projectile.r) * weapon.spread[weapon.state];
+  projectile.x += Math.cos(projectile.yaw) * weapon.spread[weapon.state];
+  projectile.y += Math.sin(projectile.yaw) * weapon.spread[weapon.state];
 
   game.gameLoop.registerObject(projectile);
 }
@@ -23,10 +23,10 @@ export const pairs = function(weapon, ship, game) {
     weapon.state += 1;
   }
 
-  projectile1.x += Math.cos(projectile1.r) * weapon.spread[weapon.state];
-  projectile1.y += Math.sin(projectile1.r) * weapon.spread[weapon.state];
-  projectile2.x -= Math.cos(projectile2.r) * weapon.spread[weapon.state];
-  projectile2.y -= Math.sin(projectile2.r) * weapon.spread[weapon.state];
+  projectile1.x += Math.cos(projectile1.yaw) * weapon.spread[weapon.state];
+  projectile1.y += Math.sin(projectile1.yaw) * weapon.spread[weapon.state];
+  projectile2.x -= Math.cos(projectile2.yaw) * weapon.spread[weapon.state];
+  projectile2.y -= Math.sin(projectile2.yaw) * weapon.spread[weapon.state];
 
   game.gameLoop.registerObject(projectile1);
   game.gameLoop.registerObject(projectile2);
