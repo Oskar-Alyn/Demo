@@ -77,6 +77,7 @@ export class Display {
     // get all lines to draw, and draws text
     this.context.font = "30px Monospace";
     this.context.fillStyle = '#FFFFFF';
+    this.context.globalAlpha = 1;
 
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
       if (typeof game.gameLoop.objectsToRun[i].graphic !== 'undefined') {

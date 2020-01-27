@@ -1,4 +1,4 @@
-import { RN } from '../mathExtention.js';
+import { RN, rotateCoord } from '../mathExtention.js';
 import { Graphic } from '../classes/Graphic.js';
 import { MultiPartGraphic } from '../classes/MultiPartGraphic.js';
 import * as parts from './partialGraphics.js';
@@ -46,6 +46,25 @@ export const grid_generator = function(squareSize, gridSize) {
         gridGraphic[gridGraphic.length] = [[squareSize * (i + 1), squareSize * ii, 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
         gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * (ii + 1), 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
       }
+    }
+  }
+
+  return new Graphic(gridGraphic, 1);
+}
+
+// creates a grid graphic based on two parameters
+export const radial_grid_generator = function(gridLines, gridDivisions) {
+  let gridGraphic = [];
+  let segmentArc = Math.PI * 2 / gridDivisions
+
+  for (let i = 1; i < gridLines; i++) {
+    for (let ii = 0; ii < gridDivisions; ii++) {
+      let corner = rotateCoord([0, i, 0], segmentArc * ii);
+      let line = rotateCoord([0, (i + 1), 0], segmentArc * ii);
+      let arc = rotateCoord([0, i, 0], segmentArc * (ii + 1));
+
+      gridGraphic[gridGraphic.length] = [corner, line];
+      gridGraphic[gridGraphic.length] = [corner, arc];
     }
   }
 

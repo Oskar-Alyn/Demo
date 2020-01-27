@@ -22,7 +22,7 @@ export const SUN = {
 }
 
 export const GRID = {
-  graphic: generators.grid_generator(10, 10),
+  graphic: generators.radial_grid_generator(4, 24),
   color: '#FFFFFF',
-  scale: 3,
+  scale: 60,
 }

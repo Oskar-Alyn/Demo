@@ -15,7 +15,7 @@ export class TargetingSystem {
           if (typeof(objects[ii].behaviour) == 'object' && objects[ii].behaviour !== null) {
 
             // check team affiliation
-            if (objects[i].color !== objects[ii].color) {
+            if (objects[i].color !== objects[ii].color && objects[i].team !== objects[ii].team) {
 
               // find distance between the two objects
               let distance = pythagorean(objects[i].x, objects[i].y, objects[ii].x, objects[ii].y);
