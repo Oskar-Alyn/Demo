@@ -1,4 +1,5 @@
 import * as graphics from './objectGraphics.js';
+import * as generators from './graphicGenerators.js';
 import * as ais from './ais.js';
 
 export const CREDIT = {
@@ -18,4 +19,10 @@ export const SUN = {
     aiFunction: ais.SUN_AI,
     detectionDistance: 1,
   },
+}
+
+export const GRID = {
+  graphic: generators.grid_generator(10, 10),
+  color: '#FFFFFF',
+  scale: 3,
 }

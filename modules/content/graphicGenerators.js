@@ -1,4 +1,5 @@
 import { RN } from '../mathExtention.js';
+import { Graphic } from '../classes/Graphic.js';
 import { MultiPartGraphic } from '../classes/MultiPartGraphic.js';
 import * as parts from './partialGraphics.js';
 
@@ -29,4 +30,24 @@ let tower_generator = function(min, max) {
 
 export const base_1_generator = function() {
   return tower_generator(4, 9);
+}
+
+// creates a grid graphic based on two parameters
+export const grid_generator = function(squareSize, gridSize) {
+  let gridGraphic = [];
+  let lineLength = squareSize * (gridSize - 1);
+
+  for (let i = -1 * gridSize; i < gridSize; i++) {
+    for (let ii = -1 * gridSize; ii < gridSize; ii++) {
+      gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * ii, 0], [squareSize * i, squareSize * (ii + 1), 0]];
+      gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * ii, 0], [squareSize * (i + 1), squareSize * ii, 0]];
+
+      if (i == gridSize - 1 || ii == gridSize - 1) {
+        gridGraphic[gridGraphic.length] = [[squareSize * (i + 1), squareSize * ii, 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
+        gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * (ii + 1), 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
+      }
+    }
+  }
+
+  return new Graphic(gridGraphic, 1);
 }

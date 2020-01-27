@@ -13,37 +13,6 @@ export class Level {
     this.gridSize = levelTemplate.gridSize;
   }
 
-  // creates a grid graphic based on two parameters
-  generateGrid(squareSize, gridSize) {
-    let gridGraphic = [];
-    let lineLength = squareSize * (gridSize - 1);
-
-    for (let i = -1 * gridSize; i < gridSize; i++) {
-      for (let ii = -1 * gridSize; ii < gridSize; ii++) {
-        gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * ii, 0], [squareSize * i, squareSize * (ii + 1), 0]];
-        gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * ii, 0], [squareSize * (i + 1), squareSize * ii, 0]];
-
-        if (i == gridSize - 1 || ii == gridSize - 1) {
-          gridGraphic[gridGraphic.length] = [[squareSize * (i + 1), squareSize * ii, 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
-          gridGraphic[gridGraphic.length] = [[squareSize * i, squareSize * (ii + 1), 0], [squareSize * (i + 1), squareSize * (ii + 1), 0]];
-        }
-      }
-    }
-
-    return new Graphic(gridGraphic, 1);
-  }
-
-  // puts the level grid into the world
-  addWorldGrid(gameLoop) {
-    let grid = new GameObject({
-      graphic: this.generateGrid(GRID_SQUARE_SIZE, this.gridSize),
-      color: HUD_COLOR,
-      scale: 1,
-    });
-    grid.alpha = 0.8;
-    gameLoop.registerObject(grid);
-  }
-
   // cleans out old objects for new level
   cleanGameLoop (game) {
     for (let i = 0; i < game.gameLoop.objectsToRun.length; i++) {
@@ -64,9 +33,6 @@ export class Level {
       graphic: this.stars,
       color: '#FFFFFF',
     }));
-
-    // add grid
-    this.addWorldGrid(game.gameLoop);
 
     // bind edges to grid size
     game.gameLoop.registerObject(new EdgeBinder(GRID_SQUARE_SIZE * this.gridSize * 3));
