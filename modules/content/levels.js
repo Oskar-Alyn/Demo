@@ -1,4 +1,5 @@
 import { Level } from '../classes/Level.js';
+import * as stars from './starFields.js';
 import * as ships from './ships.js';
 import * as teams from './teams.js';
 import * as spawners from './spawners.js';
@@ -6,6 +7,7 @@ import * as objects from './objects.js';
 
 export const SAMPLE_LEVEL = new Level({
   gridSize: 30,
+  stars: stars.TEST_FIELD,
   spawns: [
     // player
     {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 450, y: 450, yaw: Math.PI * -0.25},
@@ -42,8 +44,9 @@ export const SAMPLE_LEVEL = new Level({
 
 export const TEST_LEVEL = new Level({
   gridSize: 12,
+  stars: stars.TEST_FIELD,
   spawns: [
-    {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 150, y: 150, r: Math.PI * -0.25},
+    {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 150, y: 150, yaw: Math.PI * -0.25},
     {type: 'Ship', template: ships.FIGHTER_1, team: teams.RED, x: -550, y: -550},
   ],
 });

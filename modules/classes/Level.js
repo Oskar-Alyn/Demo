@@ -9,6 +9,7 @@ import { EdgeBinder } from './EdgeBinder.js';
 export class Level {
   constructor(levelTemplate) {
     this.spawns = levelTemplate.spawns;
+    this.stars = levelTemplate.stars;
     this.gridSize = levelTemplate.gridSize;
   }
 
@@ -58,7 +59,13 @@ export class Level {
   loadLevel (game) {
     this.cleanGameLoop(game);
 
-    // add grid first so it shows in back
+    // add star
+    game.gameLoop.registerObject(new GameObject({
+      graphic: this.stars,
+      color: '#FFFFFF',
+    }));
+
+    // add grid
     this.addWorldGrid(game.gameLoop);
 
     // bind edges to grid size
