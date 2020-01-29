@@ -52,7 +52,11 @@ export class Ship extends GameObject {
   // moves the ship according to behaviour and stats
   move() {
     if (this.movingForward) {
-      this.push(this.getR(), this.speed)
+      if (this.turningLeft || this.turningRight) {
+        this.push(this.getR(), this.speed * 0.75);
+      } else {
+        this.push(this.getR(), this.speed);
+      }
     }
     if (this.movingBackward) {
       this.push(this.getR(), -0.5 * this.speed)

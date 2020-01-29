@@ -34,9 +34,6 @@ export class Level {
       color: '#FFFFFF',
     }));
 
-    // bind edges to grid size
-    game.gameLoop.registerObject(new EdgeBinder(GRID_SQUARE_SIZE * this.gridSize * 3));
-
     // spawn designated ships
     for (let i = 0; i < this.spawns.length; i++) {
       let info = this.spawns[i];

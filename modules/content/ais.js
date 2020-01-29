@@ -14,36 +14,58 @@ export const SUN_AI = function(sun, ai, game) {
 };
 
 export const FIGHTER_AI = function(aShip, ai, game) {
-  // defaults
-  aShip.movingForward = false;
-  aShip.turningRight = false;
-  aShip.turningLeft = false;
-  aShip.useWeapon = false;
+  if (RN(0, 2) == 0) { // add reflex time
+    // defaults
+    aShip.movingForward = false;
+    aShip.turningRight = false;
+    aShip.turningLeft = false;
+    aShip.useWeapon = false;
 
-  if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null && ai.aiTarget.shield > 0) {
-    // find angle to target
-    let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y) + Math.PI * 0.5;
-    let angleOff = (targetAngle - aShip.yaw) % (Math.PI * 2);
+    if (typeof ai.aiTarget !== 'undefined' && ai.aiTarget !== null && ai.aiTarget.shield > 0) {
+      // find angle to target
+      let targetAngle = angleTo(aShip.x, aShip.y, ai.aiTarget.x, ai.aiTarget.y) + Math.PI * 0.5;
+      let yaw = (aShip.yaw + (Math.PI * 2)) % (Math.PI * 2);
 
-    aShip.movingForward = true;
-    aShip.useWeapon = (Math.abs(angleOff) * ai.targetDistance < 50);
+      let angleOff;
+      let leftDistance = (yaw >= targetAngle ? yaw - targetAngle : (Math.PI * 2) - (targetAngle - yaw));
+      let rightDistance = (targetAngle >= yaw ? targetAngle - yaw : (Math.PI * 2) - (yaw - targetAngle));
+      if (leftDistance < rightDistance) {
+        angleOff = leftDistance;
+      } else {
+        angleOff = rightDistance;
+      }
 
-    // turning decisions
-    if (angleOff < -0.018) {
-      aShip.turningLeft = true;
-    } else if (angleOff > 0.018) {
-      aShip.turningRight = true;
-    } else {
-      if (ai.targetDistance < 500) {
-        aShip.movingForward = false;
+      // firing decision
+      if (Math.abs(angleOff * ai.targetDistance) < 20 + ai.aiTarget.graphic.maxPoint) {
         aShip.useWeapon = true;
       }
+
+      // movement decisions
+      aShip.movingForward = true;
+      if (ai.targetDistance > 100) {
+        if (RN(0, 2) == 2 && aShip.useWeapon == false) { // maybe focus on turning
+          aShip.movingForward = false;
+        }
+      }
+      if (ai.targetDistance < ai.aiTarget.graphic.maxPoint) {
+        aShip.movingBackwards = true;
+        aShip.movingForward = false;
+      }
+
+      // turning decisions
+      if (Math.abs(angleOff * ai.targetDistance) > ai.aiTarget.graphic.maxPoint * 0.5 ) {
+        if (leftDistance < rightDistance) {
+          aShip.turningLeft = true;
+        } else {
+          aShip.turningRight = true;
+        }
+      }
+
+    } else {
+      // no target case, doesn't always reset because lasers can increase
+      if (ai.targetDistance < ai.detectionRange) {ai.targetDistance = ai.detectionRange};
+
     }
-
-  } else {
-    // no target case, doesn't always reset because lasers can increase
-    if (ai.targetDistance < ai.detectionRange) {ai.targetDistance = ai.detectionRange};
-
   }
 };
 

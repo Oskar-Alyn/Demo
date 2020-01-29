@@ -25,7 +25,7 @@ export const FIGHTER_1 = {
     rotationSpeed: 0.0015,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 3,
     shieldRegen: 30,
@@ -40,7 +40,7 @@ export const FIGHTER_2 = {
     rotationSpeed: 0.0015,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 19,
     shieldRegen: 10,
@@ -55,7 +55,7 @@ export const SKIRMISHER_1 = {
     rotationSpeed: 0.0012,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 7,
     shieldRegen: 20,
@@ -70,7 +70,7 @@ export const HEAVY_1 = {
     rotationSpeed: 0.0012,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 15,
     shieldRegen: 20,
@@ -85,7 +85,7 @@ export const FIREBEAST_1 = {
     rotationSpeed: 0.002,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 7,
     shieldRegen: 26,
@@ -100,7 +100,7 @@ export const ACIDBEAST_1 = {
     rotationSpeed: 0.001,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 27,
     shieldRegen: 12,
@@ -115,7 +115,7 @@ export const LIGHTNINGBEAST_1 = {
     rotationSpeed: 0.0015,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 13,
     shieldRegen: 20,
@@ -130,7 +130,7 @@ export const TALONBEAST_1 = {
     rotationSpeed: 0.0014,
     aiType: {
       aiFunction: ais.FIGHTER_AI,
-      detectionDistance: 200,
+      detectionDistance: 400,
     },
     shieldMax: 15,
     shieldRegen: 16,

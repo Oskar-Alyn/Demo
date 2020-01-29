@@ -46,7 +46,10 @@ export const TEST_LEVEL = new Level({
   gridSize: 12,
   stars: stars.TEST_FIELD,
   spawns: [
-    {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 150, y: 150, yaw: Math.PI * -0.25},
-    {type: 'Ship', template: ships.FIGHTER_1, team: teams.RED, x: -550, y: -550},
+    {type: 'Player', template: ships.SKIRMISHER_1, team: teams.BLUE, x: 100, y: 100, yaw: Math.PI * 0.75},
+    {type: 'Ship', template: ships.SKIRMISHER_1, team: teams.RED, x: -100, y: -100, yaw: Math.PI * 1.75},
+
+    // the star
+    {type: 'Object', template: objects.SUN},
   ],
 });
