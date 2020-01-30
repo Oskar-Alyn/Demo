@@ -8,51 +8,49 @@ export class Spawner {
     this.frequencyNormalizer = 0;
 
     this.spawnType = template.spawnType;
-    this.spawnTemplate = template.spawnTemplate;
-    this.team = team;
+    this.spawnTemplate = template.spawn;
+    this.spawnFunction = template.template.pattern;
 
-    this.onlyEdges = template.onlyEdges;
     this.edgeDistance = edgeDistance;
+
+    this.team = team;
+    this.game;
+    this.track = template.template.trackPattern;
+
+    this.x = template.x;
+    this.y = template.y;
+    this.yaw = template.yaw;  
+  }
+
+  doSpawnCheck () {
+    if (RN(0, this.frequency - this.frequencyNormalizer) == 0) {
+      this.frequencyNormalizer = 0;
+      return true;
+    } else {
+      this.frequencyNormalizer += 1;
+      return false;
+    }
+  }
+
+  doSpawn () {
+    let spawn;
+
+    // determine spawn type
+    if (this.spawnType == 'Ships') {
+      spawn = new Ship(this.spawnTemplate, this.team);
+    } else if (this.spawnType == 'Objects') {
+      spawn = new GameObject(this.spawnTemplate);
+    } else {
+      console.log('Bad spawner type: ' + this.spawnType);
+    }
+
+    this.game.gameLoop.registerObject(spawn);
+
+    return spawn;
   }
 
   run (game) {
-    if (RN(0, this.frequency - this.frequencyNormalizer) == 0) {
-      this.frequencyNormalizer = 0;
-      let spawn;
-
-      if (this.spawnType == 'Ships') {
-        spawn = new Ship(this.spawnTemplate, this.team);
-      } else {
-        spawn = new GameObject(this.spawnTemplate);
-      }
-
-      spawn.yaw= RN(0, 3141) / 100;
-      if (this.onlyEdges) {
-        if (RN(0, 1) == 0) {
-          spawn.x = RN(-1 * this.edgeDistance, this.edgeDistance);
-          spawn.y = (RN(0, 1) * 2 - 1) * this.edgeDistance;
-        } else {
-          spawn.x = (RN(0, 1) * 2 - 1) * this.edgeDistance;
-          spawn.y = RN(-1 * this.edgeDistance, this.edgeDistance);
-        }
-
-        // point at center
-        spawn.yaw= angleTo(spawn.x, spawn.y, 0, 0);
-
-      } else {
-        spawn.x = RN(-1 * this.edgeDistance, this.edgeDistance);
-        spawn.y = RN(-1 * this.edgeDistance, this.edgeDistance);
-        spawn.yaw= RN(0, 3141) / 100;
-
-        // move to align with grid
-        let location = rotateCoord([spawn.x, spawn.y, 0], (Math.PI / 4));
-        spawn.x = location[0];
-        spawn.y = location[1];
-      }
-
-      game.gameLoop.registerObject(spawn);
-    } else {
-      this.frequencyNormalizer += 1;
-    }
+    this.game = game;
+    this.spawnFunction(this);
   }
 }

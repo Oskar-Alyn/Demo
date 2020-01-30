@@ -1,4 +1,4 @@
-import { RN } from '../mathExtention';
+import { RN } from '../mathExtention.js';
 import { Graphic } from '../classes/Graphic.js';
 import { MultiPartGraphic } from '../classes/MultiPartGraphic.js';
 import * as parts from './partialGraphics.js';

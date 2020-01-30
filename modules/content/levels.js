@@ -26,19 +26,47 @@ export const SAMPLE_LEVEL = new Level({
     {type: 'Ship', template: ships.BASE_1, team: teams.RED, x: -550, y: -450},
 
     // team spawners
-    {type: 'Spawner', template: spawners.FIELD_SPAWNER, spawn: ships.FIGHTER_1, team: teams.BLUE},
-    {type: 'Spawner', template: spawners.FIELD_SPAWNER, spawn: ships.FIGHTER_1, team: teams.RED},
+    {type: 'Spawner',
+      template: spawners.FIELD_SPAWNER,
+      spawnType: 'Ships',
+      frequency: 400,
+      spawn: ships.FIGHTER_1,
+      team: teams.BLUE,
+    },
+    {type: 'Spawner',
+      template: spawners.FIELD_SPAWNER,
+      spawnType: 'Ships',
+      frequency: 400,
+      spawn: ships.FIGHTER_1,
+      team: teams.RED,
+    },
+    {type: 'Spawner',
+      template: spawners.POINT_SPAWNER,
+      spawnType: 'Ships',
+      frequency: 3000,
+      spawn: ships.FIGHTER_2,
+      team: teams.BLUE,
+      x: 450, y: 450, yaw: Math.PI * -0.25,
+    },
+    {type: 'Spawner',
+      template: spawners.POINT_SPAWNER,
+      spawnType: 'Ships',
+      frequency: 3000,
+      spawn: ships.FIGHTER_2,
+      team: teams.RED,
+      x: -450, y: -450, yaw: Math.PI * 0.75,
+    },
 
     // alien spawners
-    {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.FIGHTER_2, team: teams.PURPLE},
-    {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.SKIRMISHER_1, team: teams.PURPLE},
-    {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.HEAVY_1, team: teams.PURPLE},
-
-    // beast spawners
-    {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.FIREBEAST_1, team: teams.ORANGE},
-    {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.ACIDBEAST_1, team: teams.GREEN},
-    {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.LIGHTNINGBEAST_1, team: teams.YELLOW},
-    {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.TALONBEAST_1, team: teams.WHITE},
+    // {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.FIGHTER_2, team: teams.PURPLE},
+    // {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.SKIRMISHER_1, team: teams.PURPLE},
+    // {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.HEAVY_1, team: teams.PURPLE},
+    //
+    // // beast spawners
+    // {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.FIREBEAST_1, team: teams.ORANGE},
+    // {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.ACIDBEAST_1, team: teams.GREEN},
+    // {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.LIGHTNINGBEAST_1, team: teams.YELLOW},
+    // {type: 'Spawner', template: spawners.RARE_EDGE_SPAWNER, spawn: ships.TALONBEAST_1, team: teams.WHITE},
   ],
 });
 
